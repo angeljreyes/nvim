@@ -41,9 +41,6 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- vim.keymap.set('n', '<leader>db', '<cmd> DapToggleBreakpoint <CR>', { desc = 'Toggle a breakpoint' })
 -- vim.keymap.set('n', '<leader>dr', require('dap-python').test_method, { desc = 'Toggle a breakpoint' })
 
--- Git fugitive keymaps
--- vim.keymap.set('n', '<leader>gs', vim.cmd.Git, { desc = 'Git Status' })
-
 vim.filetype.add({
 	pattern = {
 		['req.*.txt'] = 'requirements',
