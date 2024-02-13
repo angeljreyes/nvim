@@ -1,33 +1,33 @@
 return {
   {
-    'nvim-treesitter/nvim-treesitter',
+    "nvim-treesitter/nvim-treesitter",
     dependencies = {
-      'nvim-treesitter/nvim-treesitter-context',
-      'nvim-treesitter/nvim-treesitter-textobjects',
+      "nvim-treesitter/nvim-treesitter-context",
+      "nvim-treesitter/nvim-treesitter-textobjects",
     },
-    build = ':TSUpdate',
+    build = ":TSUpdate",
     config = function()
       vim.defer_fn(function()
-        require('nvim-treesitter.configs').setup {
+        require("nvim-treesitter.configs").setup {
           -- Add languages to be installed here that you want installed for treesitter
           ensure_installed = {
-            'angular',
-            'c',
-            'cpp',
-            'c_sharp',
-            'go',
-            'lua',
-            'python',
-            'rust',
-            'tsx',
-            'html',
-            'css',
-            'javascript',
-            'toml',
-            'typescript',
-            'vimdoc',
-            'vim',
-            'bash',
+            "angular",
+            "c",
+            "cpp",
+            "c_sharp",
+            "go",
+            "lua",
+            "python",
+            "rust",
+            "tsx",
+            "html",
+            "css",
+            "javascript",
+            "toml",
+            "typescript",
+            "vimdoc",
+            "vim",
+            "bash",
           },
 
           -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
@@ -43,10 +43,10 @@ return {
           incremental_selection = {
             enable = false,
             keymaps = {
-              init_selection = '<c-space>',
-              node_incremental = '<c-space>',
-              scope_incremental = '<c-s>',
-              node_decremental = '<M-space>',
+              init_selection = "<c-space>",
+              node_incremental = "<c-space>",
+              scope_incremental = "<c-s>",
+              node_decremental = "<M-space>",
             },
           },
           textobjects = {
@@ -55,41 +55,41 @@ return {
               lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
               keymaps = {
                 -- You can use the capture groups defined in textobjects.scm
-                ['aa'] = '@parameter.outer',
-                ['ia'] = '@parameter.inner',
-                ['af'] = '@function.outer',
-                ['if'] = '@function.inner',
-                ['ac'] = '@class.outer',
-                ['ic'] = '@class.inner',
+                ["aa"] = "@parameter.outer",
+                ["ia"] = "@parameter.inner",
+                ["af"] = "@function.outer",
+                ["if"] = "@function.inner",
+                ["ac"] = "@class.outer",
+                ["ic"] = "@class.inner",
               },
             },
             move = {
               enable = true,
               set_jumps = true, -- whether to set jumps in the jumplist
               goto_next_start = {
-                [']m'] = '@function.outer',
-                [']]'] = '@class.outer',
+                ["]m"] = "@function.outer",
+                ["]]"] = "@class.outer",
               },
               goto_next_end = {
-                [']M'] = '@function.outer',
-                [']['] = '@class.outer',
+                ["]M"] = "@function.outer",
+                ["]["] = "@class.outer",
               },
               goto_previous_start = {
-                ['[m'] = '@function.outer',
-                ['[['] = '@class.outer',
+                ["[m"] = "@function.outer",
+                ["[["] = "@class.outer",
               },
               goto_previous_end = {
-                ['[M'] = '@function.outer',
-                ['[]'] = '@class.outer',
+                ["[M"] = "@function.outer",
+                ["[]"] = "@class.outer",
               },
             },
             swap = {
               enable = true,
               swap_next = {
-                ['<leader>cp'] = '@parameter.inner',
+                ["<leader>cp"] = "@parameter.inner",
               },
               swap_previous = {
-                ['<leader>cP'] = '@parameter.inner',
+                ["<leader>cP"] = "@parameter.inner",
               },
             },
           },
