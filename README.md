@@ -1,5 +1,5 @@
 # My nvim config
-Heavily based on kickstart.nvim, but modularized and with more plugins.
+Heavily based on [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim), but modularized and with more plugins.
 
 ## Dependencies
 ### For Lazy
