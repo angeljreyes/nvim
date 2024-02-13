@@ -19,12 +19,6 @@ vim.keymap.set("i", "<C-c>", "<esc>")
 
 vim.keymap.set({ "n", "v" }, "Z", "zz", { desc = "Center this line" })
 
--- Access file explorer
--- vim.keymap.set('n', '<leader>f', ':Neotree<CR>', { desc = 'File explorer on the right' })
--- vim.keymap.set('n', '<leader>F', ':Neotree current<CR>', { desc = 'File explorer full screen' })
-
-vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle, { desc = 'Undotree' })
-
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 
 -- Remap for dealing with word wrap
@@ -32,10 +26,6 @@ vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- Diagnostic keymaps
-
--- Debugger keymaps
--- vim.keymap.set('n', '<leader>db', '<cmd> DapToggleBreakpoint <CR>', { desc = 'Toggle a breakpoint' })
--- vim.keymap.set('n', '<leader>dr', require('dap-python').test_method, { desc = 'Toggle a breakpoint' })
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
