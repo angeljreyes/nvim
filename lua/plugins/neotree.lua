@@ -8,9 +8,9 @@ return {
       "MunifTanjim/nui.nvim",
       -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
     },
-    keys = {
-      { "<leader>f", "<cmd>Neotree<cr>", desc = "File explorer on the right" },
-      { "<leader>F", "<cmd>Neotree current<cr>", desc = "File explorer full screen" },
-    },
+    config = function()
+      vim.keymap.set("n", "<leader>f", "<cmd>Neotree<cr>", { desc = "File explorer on the right" })
+      vim.keymap.set("n", "<leader>F", "<cmd>Neotree current<cr>", { desc = "File explorer full screen" })
+    end,
   },
 }
