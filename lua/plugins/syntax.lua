@@ -3,7 +3,13 @@ return {
 
   { "hiphish/rainbow-delimiters.nvim" },
 
-  { "jiangmiao/auto-pairs" },
+  {
+    "jiangmiao/auto-pairs",
+    config = function()
+      -- Avoid nasty bug with cmp remapping CR
+      vim.g.AutoPairsMapCR = 0
+    end,
+  },
 
   { "numToStr/Comment.nvim", opts = {} },
 
