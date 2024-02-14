@@ -10,7 +10,12 @@ return {
       -- See `# Preview Mode` for more information
     },
     config = function()
-      vim.keymap.set("n", "<leader>f", "<cmd>Neotree<cr>", { desc = "File explorer on the right" })
+      vim.keymap.set(
+        "n",
+        "<leader>f",
+        "<cmd>Neotree toggle<cr>",
+        { desc = "File explorer on the right" }
+      )
       vim.keymap.set(
         "n",
         "<leader>F",
