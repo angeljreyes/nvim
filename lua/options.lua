@@ -1,7 +1,6 @@
 vim.o.hlsearch = false
 
 vim.wo.number = true
-
 vim.wo.relativenumber = true
 
 vim.o.wrap = true
@@ -30,15 +29,10 @@ vim.o.completeopt = "menuone,noselect"
 
 vim.o.termguicolors = true
 
-
--- [[ Highlight on yank ]]
--- See `:help vim.highlight.on_yank()`
+-- Highlight on yank
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
-  callback = function()
-    vim.highlight.on_yank()
-  end,
+  callback = function() vim.highlight.on_yank() end,
   group = highlight_group,
   pattern = "*",
 })
-

@@ -16,5 +16,5 @@ return {
       ["<leader>"] = { name = "VISUAL <leader>" },
       ["<leader>h"] = { "git Hunk" },
     }, { mode = "v" })
-  end
+  end,
 }

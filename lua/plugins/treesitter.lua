@@ -8,7 +8,7 @@ return {
     build = ":TSUpdate",
     config = function()
       vim.defer_fn(function()
-        require("nvim-treesitter.configs").setup {
+        require("nvim-treesitter.configs").setup({
           -- Add languages to be installed here that you want installed for treesitter
           ensure_installed = {
             "angular",
@@ -93,8 +93,8 @@ return {
               },
             },
           },
-        }
+        })
       end, 0)
-    end
+    end,
   },
 }

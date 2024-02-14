@@ -12,9 +12,11 @@ local function find_git_root()
   end
 
   -- Find the Git root directory from the current file's path
-  local git_root = vim.fn.systemlist("git -C " .. vim.fn.escape(current_dir, " ") .. " rev-parse --show-toplevel")[1]
+  local git_root = vim.fn.systemlist(
+    "git -C " .. vim.fn.escape(current_dir, " ") .. " rev-parse --show-toplevel"
+  )[1]
   if vim.v.shell_error ~= 0 then
-    print "Not a git repository. Searching on current working directory"
+    print("Not a git repository. Searching on current working directory")
     return cwd
   end
   return git_root
@@ -24,17 +26,17 @@ end
 local function live_grep_git_root()
   local git_root = find_git_root()
   if git_root then
-    require("telescope.builtin").live_grep {
+    require("telescope.builtin").live_grep({
       search_dirs = { git_root },
-    }
+    })
   end
 end
 
 local function telescope_live_grep_open_files()
-  require("telescope.builtin").live_grep {
+  require("telescope.builtin").live_grep({
     grep_open_files = true,
     prompt_title = "Live Grep in Open Files",
-  }
+  })
 end
 
 local function current_buffer_fuzzy()
@@ -44,9 +46,7 @@ local function current_buffer_fuzzy()
   }))
 end
 
-local function tlb(subcmd)
-  return "<cmd>Telescope " .. subcmd .. "<cr>"
-end
+local function tlb(subcmd) return "<cmd>Telescope " .. subcmd .. "<cr>" end
 
 local function check_venv()
   local venv = vim.fn.finddir("venv", vim.fn.getcwd())
@@ -70,14 +70,12 @@ return {
         -- NOTE: If you are having trouble with this installation,
         --       refer to the README for telescope-fzf-native for more instructions.
         build = "make",
-        cond = function()
-          return vim.fn.executable "make" == 1
-        end,
+        cond = function() return vim.fn.executable("make") == 1 end,
       },
     },
     config = function()
       local project_actions = require("telescope._extensions.project.actions")
-      require("telescope").setup {
+      require("telescope").setup({
         defaults = {
           mappings = {
             i = {
@@ -93,15 +91,15 @@ return {
               check_venv()
               vim.api.nvim_command("Neotree current")
               require("telescope.builtin").find_files()
-            end
-          }
-        }
-      }
+            end,
+          },
+        },
+      })
       require("telescope").load_extension("project")
       vim.keymap.set(
         "n",
         "<leader>sp",
-        function() require"telescope".extensions.project.project{ display_type = "full" } end,
+        function() require("telescope").extensions.project.project({ display_type = "full" }) end,
         { desc = "Search Projects" }
       )
       pcall(require("telescope").load_extension, "fzf")
@@ -110,15 +108,17 @@ return {
     keys = {
       { "<leader>?", tlb("oldfiles"), desc = "Find recently opened files" },
       { "<leader><space>", tlb("buffers"), desc = "Find existing buffers" },
-      { "<leader>/", current_buffer_fuzzy, desc = "Fuzzily search in current buffer" },
+      {
+        "<leader>/",
+        current_buffer_fuzzy,
+        desc = "Fuzzily search in current buffer",
+      },
       { "<leader>s/", telescope_live_grep_open_files, desc = "Search in Open Files" },
       { "<leader>ss", tlb("builtin"), desc = "Search Select telescope" },
       { "<leader>sg", tlb("git_files"), desc = "Search Git files" },
       {
         "<leader>sf",
-        function()
-          require("telescope.builtin").find_files({ no_ignore = true })
-        end,
+        function() require("telescope.builtin").find_files({ no_ignore = true }) end,
         desc = "Search Files",
       },
       { "<leader>sh", tlb("help_tags"), desc = "Search Help" },

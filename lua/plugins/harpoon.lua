@@ -15,19 +15,20 @@ return {
         table.insert(file_paths, item.value)
       end
 
-      require("telescope.pickers").new({}, {
-        prompt_title = "Harpoon",
-        finder = require("telescope.finders").new_table({
-          results = file_paths,
-        }),
-        previewer = tlsconfig.file_previewer({}),
-        sorter = tlsconfig.generic_sorter({}),
-      }):find()
+      require("telescope.pickers")
+        .new({}, {
+          prompt_title = "Harpoon",
+          finder = require("telescope.finders").new_table({
+            results = file_paths,
+          }),
+          previewer = tlsconfig.file_previewer({}),
+          sorter = tlsconfig.generic_sorter({}),
+        })
+        :find()
     end
 
     local hp_list = harpoon:list()
-    vim.keymap.set("n", "<leader>as", function() toggle_telescope(hp_list) end,
-      { desc = "Search" })
+    vim.keymap.set("n", "<leader>as", function() toggle_telescope(hp_list) end, { desc = "Search" })
     vim.keymap.set("n", "<leader>an", function() hp_list:append() end, { desc = "New index" })
 
     vim.keymap.set("n", "<leader>aj", function() hp_list:select(1) end, { desc = "First index" })
@@ -45,5 +46,5 @@ return {
     -- Toggle previous & next buffers stored within Harpoon list
     vim.keymap.set("n", "<C-z>", function() hp_list:prev() end, { desc = "Previous harpoon index" })
     vim.keymap.set("n", "<C-x>", function() hp_list:next() end, { desc = "Next harpoon index" })
-  end
+  end,
 }

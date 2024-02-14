@@ -39,7 +39,11 @@ return {
       nmap("gI", require("telescope.builtin").lsp_implementations, "Go to Implementation")
       nmap("<leader>D", require("telescope.builtin").lsp_type_definitions, "type Definition")
       nmap("<leader>cs", require("telescope.builtin").lsp_document_symbols, "Document Symbols")
-      nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "Workspace Symbols")
+      nmap(
+        "<leader>ws",
+        require("telescope.builtin").lsp_dynamic_workspace_symbols,
+        "Workspace Symbols"
+      )
 
       -- See `:help K` for why this keymap
       nmap("K", vim.lsp.buf.hover, "Hover Documentation")
@@ -49,14 +53,19 @@ return {
       nmap("gD", vim.lsp.buf.declaration, "Go to Declaration")
       nmap("<leader>wa", vim.lsp.buf.add_workspace_folder, "Workspace Add Folder")
       nmap("<leader>wr", vim.lsp.buf.remove_workspace_folder, "Workspace Remove Folder")
-      nmap("<leader>wl", function()
-        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-      end, "Workspace List Folders")
+      nmap(
+        "<leader>wl",
+        function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
+        "Workspace List Folders"
+      )
 
       -- Create a command `:Format` local to the LSP buffer
-      vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
-        vim.lsp.buf.format()
-      end, { desc = "Format current buffer with LSP" })
+      vim.api.nvim_buf_create_user_command(
+        bufnr,
+        "Format",
+        function(_) vim.lsp.buf.format() end,
+        { desc = "Format current buffer with LSP" }
+      )
     end
 
     require("mason").setup({
@@ -66,7 +75,7 @@ return {
           package_installed = "󰄳 ",
           package_uninstalled = " 󰚌",
         },
-      }
+      },
     })
     require("mason-lspconfig").setup()
 
@@ -101,45 +110,41 @@ return {
     capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
     -- Ensure the servers above are installed
-    local mason_lspconfig = require "mason-lspconfig"
+    local mason_lspconfig = require("mason-lspconfig")
 
-    mason_lspconfig.setup {
+    mason_lspconfig.setup({
       ensure_installed = vim.tbl_keys(servers),
-    }
+    })
 
-    mason_lspconfig.setup_handlers {
+    mason_lspconfig.setup_handlers({
       function(server_name)
-        require("lspconfig")[server_name].setup {
+        require("lspconfig")[server_name].setup({
           capabilities = capabilities,
           on_attach = on_attach,
           settings = servers[server_name],
           filetypes = (servers[server_name] or {}).filetypes,
-        }
+        })
       end,
-    }
+    })
 
-    vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-      vim.lsp.diagnostic.on_publish_diagnostics,
-      {
+    vim.lsp.handlers["textDocument/publishDiagnostics"] =
+      vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
         virtual_text = true,
         signs = false,
         update_in_insert = true,
         underline = true,
-      }
-    )
+      })
 
     -- [[ Configure nvim-cmp ]]
     -- See `:help cmp`
-    local cmp = require "cmp"
-    local luasnip = require "luasnip"
+    local cmp = require("cmp")
+    local luasnip = require("luasnip")
     require("luasnip.loaders.from_vscode").lazy_load()
     luasnip.config.setup({})
 
     cmp.setup({
       snippet = {
-        expand = function(args)
-          luasnip.lsp_expand(args.body)
-        end,
+        expand = function(args) luasnip.lsp_expand(args.body) end,
       },
       completion = {
         completeopt = "menu,menuone,noinsert",
@@ -149,11 +154,11 @@ return {
         ["<C-p>"] = cmp.mapping.select_prev_item(),
         -- ["<C-b>"] = cmp.mapping.scroll_docs(-4),
         -- ["<C-f>"] = cmp.mapping.scroll_docs(4),
-        ["<C-Space>"] = cmp.mapping.complete {},
-        ["<CR>"] = cmp.mapping.confirm {
+        ["<C-Space>"] = cmp.mapping.complete({}),
+        ["<CR>"] = cmp.mapping.confirm({
           behavior = cmp.ConfirmBehavior.Replace,
           select = true,
-        },
+        }),
         ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_next_item()
@@ -179,5 +184,5 @@ return {
         { name = "path" },
       },
     })
-  end
+  end,
 }
