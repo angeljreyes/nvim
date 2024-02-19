@@ -97,6 +97,7 @@ return {
       tailwindcss = {},
       clangd = {},
       pyright = {},
+      ruff_lsp = {},
       lua_ls = {
         Lua = {
           workspace = { checkThirdParty = false },
