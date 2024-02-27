@@ -1,7 +1,10 @@
 return {
   {
     "tpope/vim-fugitive",
-    config = function() vim.keymap.set("n", "<leader>gs", vim.cmd.Git, { desc = "Git Status" }) end,
+    config = function()
+      vim.keymap.set("n", "<leader>gs", vim.cmd.Git, { desc = "Git Status" })
+      vim.keymap.set("n", "<leader>gl", function() vim.cmd.Git("log") end, { desc = "Git Log" })
+    end,
   },
 
   { "tpope/vim-rhubarb" },
