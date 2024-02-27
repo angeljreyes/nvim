@@ -86,9 +86,9 @@ return {
 
     local servers = {
       -- gopls = {},
-      -- rust_analyzer = {},
       -- html = { filetypes = { "html", "twig", "hbs"} },
 
+      rust_analyzer = {},
       omnisharp = {
         filetypes = { "csx", "cs" },
       },
