@@ -95,6 +95,7 @@ return {
       tsserver = {},
       angularls = {},
       tailwindcss = {},
+      jsonls = {},
       clangd = {},
       pyright = {},
       ruff_lsp = {},
