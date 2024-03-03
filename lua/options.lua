@@ -1,33 +1,33 @@
-vim.o.hlsearch = false
+vim.opt.hlsearch = false
 
-vim.wo.number = true
-vim.wo.relativenumber = true
+vim.opt.number = true
+vim.opt.relativenumber = true
 
-vim.o.wrap = true
+vim.opt.wrap = true
 
-vim.o.mouse = "a"
+vim.opt.mouse = "a"
 
-vim.o.cursorline = true
+vim.opt.cursorline = true
 
-vim.o.scrolloff = 8
+vim.opt.scrolloff = 8
 
-vim.o.breakindent = true
-vim.o.shiftwidth = 4
-vim.o.tabstop = 4
+vim.opt.breakindent = true
+vim.opt.shiftwidth = 4
+vim.opt.tabstop = 4
 
-vim.o.undofile = true
+vim.opt.undofile = true
 
-vim.o.ignorecase = true
-vim.o.smartcase = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
-vim.wo.signcolumn = "yes"
+vim.opt.signcolumn = "yes"
 
-vim.o.updatetime = 250
-vim.o.timeoutlen = 300
+vim.opt.updatetime = 250
+vim.opt.timeoutlen = 300
 
-vim.o.completeopt = "menuone,noselect"
+vim.opt.completeopt = "menuone,noselect"
 
-vim.o.termguicolors = true
+vim.opt.termguicolors = true
 
 -- Highlight on yank
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
