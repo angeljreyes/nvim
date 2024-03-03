@@ -22,6 +22,20 @@ return {
         icons_enabled = true,
         theme = "auto",
       },
+      sections = {
+        lualine_c = {
+          {
+            "filename",
+            newfile_status = true,
+            path = 1,
+            symbols = {
+              modified = " ",
+              readonly = " ",
+              newfile = " ",
+            }
+          }
+        }
+      },
     },
   },
 }
