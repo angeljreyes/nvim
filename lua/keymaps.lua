@@ -20,9 +20,3 @@ vim.keymap.set("i", "<C-c>", "<esc>")
 vim.keymap.set({ "n", "v" }, "Z", "zz", { desc = "Center this line" })
 
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
-
-vim.filetype.add({
-  pattern = {
-    ["req.*.txt"] = "requirements",
-  },
-})
