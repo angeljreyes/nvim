@@ -5,6 +5,7 @@ Heavily based on [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim), b
 Neovim `winget install neovim`
 
 - Git (for Lazy) `winget install git.git`
+- [Nerd font](https://www.nerdfonts.com/font-downloads) (for many plugins)
 - fd (for Telescope and VenvSelect) `winget install sharkdp.fd`
 - Ripgrep (for Telescope) `winget install ripgrep.gnu`
 - Any [C compiler](https://winlibs.com) (for treesitter and fzf-native)
