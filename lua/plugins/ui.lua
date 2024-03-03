@@ -32,9 +32,22 @@ return {
               modified = " ",
               readonly = " ",
               newfile = " ",
-            }
-          }
-        }
+            },
+          },
+        },
+      },
+      inactive_sections = {
+        lualine_c = {
+          {
+            "filename",
+            newfile_status = true,
+            symbols = {
+              modified = " ",
+              readonly = " ",
+              newfile = " ",
+            },
+          },
+        },
       },
     },
   },
