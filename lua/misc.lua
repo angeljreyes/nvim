@@ -1,6 +1,7 @@
 vim.filetype.add({
   pattern = {
     ["req.*.txt"] = "requirements",
+    [".*component.html"] = "angular",
   },
 })
 

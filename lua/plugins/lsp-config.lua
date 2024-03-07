@@ -93,8 +93,17 @@ return {
         filetypes = { "csx", "cs" },
       },
       tsserver = {},
-      angularls = {},
-      tailwindcss = {},
+      angularls = {
+        filetypes = { "html", "angular" },
+      },
+      tailwindcss = {
+        filetypes = { "html", "angular" },
+        init_options = {
+          userLanguages = {
+            angular = "html",
+          },
+        },
+      },
       jsonls = {},
       clangd = {},
       pyright = {},
@@ -130,6 +139,7 @@ return {
           on_attach = on_attach,
           settings = servers[server_name],
           filetypes = (servers[server_name] or {}).filetypes,
+          init_options = (servers[server_name] or {}).init_options,
         })
       end,
     })
