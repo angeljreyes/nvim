@@ -37,6 +37,13 @@ return {
         },
         lualine_x = {
           "encoding",
+          function()
+            if vim.bo.expandtab then
+              return "spaces"
+            else
+              return "tabs"
+            end
+          end,
           {
             "fileformat",
             symbols = {
