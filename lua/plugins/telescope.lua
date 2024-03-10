@@ -16,7 +16,6 @@ local function find_git_root()
     "git -C " .. vim.fn.escape(current_dir, " ") .. " rev-parse --show-toplevel"
   )[1]
   if vim.v.shell_error ~= 0 then
-    print("Not a git repository. Searching on current working directory")
     return cwd
   end
   return git_root
@@ -32,7 +31,7 @@ local function live_grep_git_root()
   end
 end
 
-local function telescope_live_grep_open_files()
+local function live_grep_open_files()
   require("telescope.builtin").live_grep({
     grep_open_files = true,
     prompt_title = "Live Grep in Open Files",
@@ -46,7 +45,23 @@ local function current_buffer_fuzzy()
   }))
 end
 
-local function tlb(subcmd) return "<cmd>Telescope " .. subcmd .. "<cr>" end
+local function search_files()
+  find_git_root()
+  if vim.v.shell_error ~= 0 then
+    require("telescope.builtin").find_files()
+  else
+    require("telescope.builtin").git_files({ show_untracked = true })
+  end
+end
+
+local function search_ignored()
+  local git_root = find_git_root()
+  require("telescope.builtin").find_files({
+    cwd = git_root,
+    hidden = true,
+    no_ignore = true,
+  })
+end
 
 local function check_venv()
   local venv = vim.fn.finddir("venv", vim.fn.getcwd())
@@ -96,6 +111,7 @@ return {
           },
         },
       })
+
       require("telescope").load_extension("project")
       vim.keymap.set(
         "n",
@@ -105,31 +121,38 @@ return {
       )
       pcall(require("telescope").load_extension, "fzf")
       vim.api.nvim_create_user_command("LiveGrepGitRoot", live_grep_git_root, {})
-    end,
-    keys = {
-      { "<leader>?", tlb("oldfiles"), desc = "Find recently opened files" },
-      { "<leader><space>", tlb("buffers"), desc = "Find existing buffers" },
-      {
+
+      local tcbi = require("telescope.builtin")
+      vim.keymap.set("n", "<leader>?", tcbi.oldfiles, { desc = "Find recently opened files" })
+      vim.keymap.set("n", "<leader><space>", tcbi.buffers, { desc = "Find existing buffers" })
+      vim.keymap.set(
+        "n",
         "<leader>/",
         current_buffer_fuzzy,
-        desc = "Fuzzily search in current buffer",
-      },
-      { "<leader>s/", telescope_live_grep_open_files, desc = "Search in Open Files" },
-      { "<leader>ss", tlb("builtin"), desc = "Search Select telescope" },
-      { "<leader>sg", tlb("git_files"), desc = "Search Git files" },
-      {
-        "<leader>sf",
-        function() require("telescope.builtin").find_files({ no_ignore = true }) end,
-        desc = "Search Files",
-      },
-      { "<leader>sh", tlb("help_tags"), desc = "Search Help" },
-      { "<leader>sw", tlb("grep_string"), desc = "Search current Word" },
-      { "<leader>sl", tlb("live_grep"), desc = "Search by Live grep" },
-      { "<leader>sL", "<cmd>LiveGrepGitRoot<cr>", desc = "Search by Live grep on git goot" },
-      { "<leader>sd", tlb("diagnostics"), desc = "Search Diagnostics" },
-      { "<leader>sr", tlb("resume"), desc = "Search Resume" },
-      { "<leader>sk", tlb("keymaps"), desc = "Search Keymaps" },
-    },
+        { desc = "Fuzzily search in current buffer" }
+      )
+      vim.keymap.set(
+        "n",
+        "<leader>s/",
+        live_grep_open_files,
+        { desc = "Search in Open Files" }
+      )
+      vim.keymap.set("n", "<leader>ss", tcbi.builtin, { desc = "Search Select telescope" })
+      vim.keymap.set("n", "<leader>sf", search_files, { desc = "Search Files" })
+      vim.keymap.set("n", "<leader>si", search_ignored, { desc = "Search Ignored files" })
+      vim.keymap.set("n", "<leader>sh", tcbi.help_tags, { desc = "Search Help" })
+      vim.keymap.set("n", "<leader>sw", tcbi.grep_string, { desc = "Search current Word" })
+      vim.keymap.set("n", "<leader>sl", tcbi.live_grep, { desc = "Search by Live grep" })
+      vim.keymap.set(
+        "n",
+        "<leader>sL",
+        "<cmd>LiveGrepGitRoot<cr>",
+        { desc = "Search by Live grep on git goot" }
+      )
+      vim.keymap.set("n", "<leader>sd", tcbi.diagnostics, { desc = "Search Diagnostics" })
+      vim.keymap.set("n", "<leader>sr", tcbi.resume, { desc = "Search Resume" })
+      vim.keymap.set("n", "<leader>sk", tcbi.keymaps, { desc = "Search Keymaps" })
+    end,
   },
   {
     "linux-cultist/venv-selector.nvim",
