@@ -131,12 +131,7 @@ return {
         current_buffer_fuzzy,
         { desc = "Fuzzily search in current buffer" }
       )
-      vim.keymap.set(
-        "n",
-        "<leader>s/",
-        live_grep_open_files,
-        { desc = "Search in Open Files" }
-      )
+      vim.keymap.set("n", "<leader>s/", live_grep_open_files, { desc = "Search in Open Files" })
       vim.keymap.set("n", "<leader>ss", tcbi.builtin, { desc = "Search Select telescope" })
       vim.keymap.set("n", "<leader>sf", search_files, { desc = "Search Files" })
       vim.keymap.set("n", "<leader>si", search_ignored, { desc = "Search Ignored files" })
