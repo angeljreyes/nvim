@@ -33,6 +33,9 @@ return {
               readonly = " ",
               newfile = " ",
             },
+            fmt = function(s, _)
+              return s:gsub([[\]], "/")
+            end,
           },
         },
         lualine_x = {
