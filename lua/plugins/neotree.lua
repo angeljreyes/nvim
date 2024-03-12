@@ -46,6 +46,7 @@ return {
             ["]c"] = "next_git_modified",
           },
         },
+        hijack_netrw_behavior = "open_current",
       },
     })
     vim.keymap.set(
