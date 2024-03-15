@@ -17,6 +17,9 @@ vim.keymap.set("n", "N", "Nzz", { desc = "Previous search result" })
 -- Visual block mode fix
 vim.keymap.set("i", "<C-c>", "<esc>")
 
+-- Disable "Type  :qa  and press <Enter> to exit Nvim" text
+vim.cmd([[nnoremap <C-c> <silent> <C-c>]])
+
 vim.keymap.set({ "n", "v" }, "Z", "zz", { desc = "Center this line" })
 
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
