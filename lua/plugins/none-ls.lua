@@ -7,11 +7,8 @@ return {
       sources = {
         btins.formatting.stylua,
 
-        -- btins.diagnostics.ruff,
-        -- btins.formatting.ruff,
         btins.formatting.isort,
 
-        btins.diagnostics.eslint_d,
         btins.formatting.prettier,
       },
     })
