@@ -30,3 +30,6 @@ vim.opt.completeopt = "menuone,noselect"
 vim.opt.termguicolors = true
 
 vim.opt.showmode = false
+
+vim.opt.title = true
+vim.opt.titlestring = [[%t – %{fnamemodify(getcwd(), ':t')}]]
