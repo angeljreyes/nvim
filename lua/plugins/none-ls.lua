@@ -9,7 +9,9 @@ return {
 
         btins.formatting.isort,
 
-        btins.formatting.prettier,
+        btins.formatting.prettier.with({
+          extra_filetypes = { "angular" },
+        }),
       },
     })
 
