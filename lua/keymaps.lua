@@ -8,11 +8,9 @@ vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', { desc = "Paste from clipboard"
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
 
--- Keep center cursor when scrolling half page
+-- Keep centered cursor when scrolling half page
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Scroll down half a page" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Scroll up half a page" })
-vim.keymap.set("n", "n", "nzz", { desc = "Next search result" })
-vim.keymap.set("n", "N", "Nzz", { desc = "Previous search result" })
 
 -- Visual block mode fix
 vim.keymap.set("i", "<C-c>", "<esc>")
