@@ -3,6 +3,9 @@ vim.filetype.add({
     ["req.*.txt"] = "requirements",
     [".*component.html"] = "angular",
   },
+  extension = {
+    mon = "monkey",
+  },
 })
 
 vim.api.nvim_create_autocmd("TextYankPost", {

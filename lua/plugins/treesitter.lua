@@ -95,6 +95,14 @@ return {
           },
         })
       end, 0)
+      local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+      parser_config.monkey = {
+        install_info = {
+          url = "https://github.com/jamestrew/tree-sitter-monkey.git",
+          files = {"src/parser.c"},
+        },
+        filetype = "mon",
+      }
     end,
   },
 }
