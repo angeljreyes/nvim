@@ -97,6 +97,10 @@ return {
               ["<C-u>"] = false,
               ["<C-d>"] = false,
               ["<C-y>"] = require("telescope.actions").select_default,
+              ["<C-q>"] = require("telescope.actions").smart_send_to_qflist,
+              ["<M-q>"] = require("telescope.actions").smart_add_to_qflist,
+              ["<C-l>"] = require("telescope.actions").smart_send_to_loclist,
+              ["<M-l>"] = require("telescope.actions").smart_add_to_loclist,
             },
           },
         },
@@ -137,7 +141,10 @@ return {
       vim.keymap.set("n", "<leader>si", search_ignored, { desc = "Search Ignored files" })
       vim.keymap.set("n", "<leader>sh", tcbi.help_tags, { desc = "Search Help" })
       vim.keymap.set("n", "<leader>sw", tcbi.grep_string, { desc = "Search current Word" })
-      vim.keymap.set("n", "<leader>sl", tcbi.live_grep, { desc = "Search by Live grep" })
+      vim.keymap.set("n", "<leader>sg", tcbi.live_grep, { desc = "Search by Grep" })
+      vim.keymap.set("n", "<leader>sq", tcbi.quickfix, { desc = "Search the quickfix list" })
+      vim.keymap.set("n", "<leader>sQ", tcbi.quickfixhistory, { desc = "Search the quickfix history" })
+      vim.keymap.set("n", "<leader>sl", tcbi.loclist, { desc = "Search the location list history" })
       vim.keymap.set(
         "n",
         "<leader>sL",

@@ -21,3 +21,7 @@ vim.cmd([[nnoremap <C-c> <silent> <C-c>]])
 vim.keymap.set({ "n", "v" }, "Z", "zz", { desc = "Center this line" })
 
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
+
+-- Quickfix list navigation
+vim.keymap.set("n", "[q", "<cmd>cprev<cr>", { desc = "Previous quickfix list item" })
+vim.keymap.set("n", "]q", "<cmd>cnext<cr>", { desc = "Next quickfix list item" })
