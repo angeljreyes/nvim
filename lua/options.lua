@@ -32,4 +32,5 @@ vim.opt.termguicolors = true
 vim.opt.showmode = false
 
 vim.opt.title = true
-vim.opt.titlestring = [[%t – %{fnamemodify(getcwd(), ':t')}]]
+vim.opt.titlelen = 0
+vim.opt.titlestring = [[nvim – %{fnamemodify(getcwd(), ':t')}/%t]]
