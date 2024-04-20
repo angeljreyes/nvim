@@ -5,7 +5,19 @@ return {
     "nvim-lua/plenary.nvim",
     "nvim-tree/nvim-web-devicons",
     "MunifTanjim/nui.nvim",
-    -- "3rd/image.nvim", -- Optional image support in preview window:
+    {
+      "3rd/image.nvim",
+      opts = {
+        backend = "kitty",
+      },
+      dependencies = {
+        "vhyrro/luarocks.nvim",
+        priority = 1001, -- this plugin needs to run before anything else
+        opts = {
+          rocks = { "magick" },
+        },
+      },
+    }, -- Optional image support in preview window:
     -- See `# Preview Mode` for more information
   },
   config = function()
