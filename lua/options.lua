@@ -1,3 +1,5 @@
+vim.g.omni_sql_no_default_maps = true
+
 vim.opt.hlsearch = false
 
 vim.opt.number = true
