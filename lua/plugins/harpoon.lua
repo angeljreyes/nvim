@@ -7,38 +7,26 @@ return {
   },
   config = function()
     local harpoon = require("harpoon")
-    harpoon:setup({})
-    local tlsconfig = require("telescope.config").values
-    local function toggle_telescope(harpoon_files)
-      local file_paths = {}
-      for _, item in ipairs(harpoon_files.items) do
-        table.insert(file_paths, item.value)
-      end
+    harpoon:setup({
+      settings = {
+        save_on_toggle = true,
+        sync_on_ui_close = true,
+      },
+    })
 
-      require("telescope.pickers")
-        .new({}, {
-          prompt_title = "Harpoon",
-          finder = require("telescope.finders").new_table({
-            results = file_paths,
-          }),
-          previewer = tlsconfig.file_previewer({}),
-          sorter = tlsconfig.generic_sorter({}),
-        })
-        :find()
+    --- @param index integer index to select a list item
+    --- @return function
+    local function sel(index)
+      return function() harpoon:list():select(index) end
     end
 
-    vim.keymap.set("n", "<leader>as", function() toggle_telescope(harpoon:list()) end, { desc = "Search" })
+    vim.keymap.set("n", "<leader>as", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc = "Search" })
     vim.keymap.set("n", "<leader>an", function() harpoon:list():append() end, { desc = "New index" })
 
-    vim.keymap.set("n", "<leader>aj", function() harpoon:list():select(1) end, { desc = "First index" })
-    vim.keymap.set("n", "<leader>ak", function() harpoon:list():select(2) end, { desc = "Second index" })
-    vim.keymap.set("n", "<leader>al", function() harpoon:list():select(3) end, { desc = "Third index" })
-    vim.keymap.set("n", "<leader>a;", function() harpoon:list():select(4) end, { desc = "Fourth index" })
-
-    vim.keymap.set("n", "<leader>adj", function() harpoon:list():removeAt(1) end, { desc = "Delete first index" })
-    vim.keymap.set("n", "<leader>adk", function() harpoon:list():removeAt(2) end, { desc = "Delete second index" })
-    vim.keymap.set("n", "<leader>adl", function() harpoon:list():removeAt(3) end, { desc = "Delete third index" })
-    vim.keymap.set("n", "<leader>ad;", function() harpoon:list():removeAt(4) end, { desc = "Delete fourth index" })
+    vim.keymap.set("n", "<leader>aj", sel(1), { desc = "First index" })
+    vim.keymap.set("n", "<leader>ak", sel(2), { desc = "Second index" })
+    vim.keymap.set("n", "<leader>al", sel(3), { desc = "Third index" })
+    vim.keymap.set("n", "<leader>a;", sel(4), { desc = "Fourth index" })
 
     vim.keymap.set("n", "<leader>ac", function() harpoon:list():clear() end, { desc = "Clear list" })
 

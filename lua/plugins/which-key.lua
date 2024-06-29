@@ -3,7 +3,6 @@ return {
   config = function()
     require("which-key").register({
       ["<leader>a"] = { name = "Harpoon", _ = "which_key_ignore" },
-      ["<leader>ad"] = { name = "Delete", _ = "which_key_ignore" },
       ["<leader>c"] = { name = "Code", _ = "which_key_ignore" },
       ["<leader>d"] = { name = "Debugger", _ = "which_key_ignore" },
       ["<leader>g"] = { name = "Git", _ = "which_key_ignore" },
