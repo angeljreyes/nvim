@@ -31,7 +31,7 @@ return {
     vim.keymap.set("n", "<leader>ac", function() harpoon:list():clear() end, { desc = "Clear list" })
 
     -- Toggle previous & next buffers stored within Harpoon list
-    vim.keymap.set("n", "<C-z>", function() harpoon:list():prev() end, { desc = "Previous harpoon index" })
-    vim.keymap.set("n", "<C-x>", function() harpoon:list():next() end, { desc = "Next harpoon index" })
+    vim.keymap.set("n", "[a", function() harpoon:list():prev() end, { desc = "Previous harpoon index" })
+    vim.keymap.set("n", "]a", function() harpoon:list():next() end, { desc = "Next harpoon index" })
   end,
 }
