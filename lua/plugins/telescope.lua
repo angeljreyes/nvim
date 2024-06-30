@@ -172,6 +172,7 @@ return {
       })
 
       require("venv-selector").setup({
+        stay_on_this_version = true,
         name = { "venv", ".venv" },
         parents = 0,
         -- auto_refresh = false
