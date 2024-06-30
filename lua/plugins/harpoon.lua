@@ -21,7 +21,7 @@ return {
     end
 
     vim.keymap.set("n", "<leader>as", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc = "Search" })
-    vim.keymap.set("n", "<leader>an", function() harpoon:list():append() end, { desc = "New index" })
+    vim.keymap.set("n", "<leader>an", function() harpoon:list():add() end, { desc = "New index" })
 
     vim.keymap.set("n", "<leader>aj", sel(1), { desc = "First index" })
     vim.keymap.set("n", "<leader>ak", sel(2), { desc = "Second index" })
