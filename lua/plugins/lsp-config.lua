@@ -88,15 +88,15 @@ return {
       -- gopls = {},
       -- html = { filetypes = { "html", "twig", "hbs"} },
 
-      rust_analyzer = {},
+      rust_analyzer = vim.env.NVIM_HOME_PROFILE and {},
       omnisharp = {
         filetypes = { "csx", "cs" },
       },
-      tsserver = {},
-      angularls = {
+      tsserver = vim.env.NVIM_HOME_PROFILE and {},
+      angularls = vim.env.NVIM_HOME_PROFILE and {
         filetypes = { "html", "angular" },
       },
-      tailwindcss = {
+      tailwindcss = vim.env.NVIM_HOME_PROFILE and {
         filetypes = { "html", "angular" },
         init_options = {
           userLanguages = {
@@ -105,9 +105,9 @@ return {
         },
       },
       jsonls = {},
-      clangd = {},
-      pyright = {},
-      ruff_lsp = {},
+      clangd = vim.env.NVIM_HOME_PROFILE and {},
+      pyright = vim.env.NVIM_HOME_PROFILE and {},
+      ruff_lsp = vim.env.NVIM_HOME_PROFILE and {},
       lua_ls = {
         Lua = {
           workspace = { checkThirdParty = false },

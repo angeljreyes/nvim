@@ -7,6 +7,7 @@ return {
     "MunifTanjim/nui.nvim",
     {
       "3rd/image.nvim",
+      enabled = vim.env.NVIM_HOME_PROFILE,
       opts = {
         backend = "kitty",
       },
