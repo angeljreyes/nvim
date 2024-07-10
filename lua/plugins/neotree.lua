@@ -64,13 +64,13 @@ return {
     })
     vim.keymap.set(
       "n",
-      "<leader>f",
+      "<leader>F",
       "<cmd>Neotree toggle<cr>",
       { desc = "File explorer on the right" }
     )
     vim.keymap.set(
       "n",
-      "<leader>F",
+      "<leader>f",
       "<cmd>Neotree current<cr>",
       { desc = "File explorer full screen" }
     )
