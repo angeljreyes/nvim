@@ -1,8 +1,10 @@
+-- TODO: asdf
 return {
   { "nvim-tree/nvim-web-devicons" },
 
   {
     "folke/todo-comments.nvim",
+    enabled = vim.env.NVIM_PROFILE == "home",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
       local tc = require("todo-comments")

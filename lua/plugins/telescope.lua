@@ -158,7 +158,7 @@ return {
   },
   {
     "linux-cultist/venv-selector.nvim",
-    enabled = vim.env.NVIM_HOME_PROFILE,
+    enabled = vim.env.NVIM_PROFILE == "home",
     dependencies = {
       "neovim/nvim-lspconfig",
       "nvim-telescope/telescope.nvim",
