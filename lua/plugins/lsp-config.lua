@@ -8,37 +8,40 @@ return {
   },
   config = function()
     local on_attach = function(_, bufnr)
-      local nmap = function(keys, func, desc)
+      local map = function(mode, keys, func, desc)
         if desc then
           desc = "LSP: " .. desc
         end
 
-        vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
+        vim.keymap.set(mode, keys, func, { buffer = bufnr, desc = desc })
       end
 
-      nmap("<leader>cr", vim.lsp.buf.rename, "Code Rename")
-      nmap("<leader>ca", vim.lsp.buf.code_action, "Code Action")
+      map("n", "<leader>cr", vim.lsp.buf.rename, "Code Rename")
+      map("n", "<leader>ca", vim.lsp.buf.code_action, "Code Action")
+      map("i", "<c-.>", vim.lsp.buf.code_action, "Code Action")
 
-      nmap("gd", require("telescope.builtin").lsp_definitions, "Go to Definition")
-      nmap("gr", require("telescope.builtin").lsp_references, "Go to References")
-      nmap("gI", require("telescope.builtin").lsp_implementations, "Go to Implementation")
-      nmap("<leader>D", require("telescope.builtin").lsp_type_definitions, "type Definition")
-      nmap("<leader>cs", require("telescope.builtin").lsp_document_symbols, "Document Symbols")
-      nmap(
+      map("n", "gd", require("telescope.builtin").lsp_definitions, "Go to Definition")
+      map("n", "gr", require("telescope.builtin").lsp_references, "Go to References")
+      map("n", "gI", require("telescope.builtin").lsp_implementations, "Go to Implementation")
+      map("n", "<leader>D", require("telescope.builtin").lsp_type_definitions, "type Definition")
+      map("n", "<leader>cs", require("telescope.builtin").lsp_document_symbols, "Document Symbols")
+      map(
+        "n",
         "<leader>ws",
         require("telescope.builtin").lsp_dynamic_workspace_symbols,
         "Workspace Symbols"
       )
 
       -- See `:help K` for why this keymap
-      nmap("K", vim.lsp.buf.hover, "Hover Documentation")
-      nmap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
+      map("n", "K", vim.lsp.buf.hover, "Hover Documentation")
+      map("n", "<c-k>", vim.lsp.buf.signature_help, "Signature Documentation")
 
       -- Lesser used LSP functionality
-      nmap("gD", vim.lsp.buf.declaration, "Go to Declaration")
-      nmap("<leader>wa", vim.lsp.buf.add_workspace_folder, "Workspace Add Folder")
-      nmap("<leader>wr", vim.lsp.buf.remove_workspace_folder, "Workspace Remove Folder")
-      nmap(
+      map("n", "gD", vim.lsp.buf.declaration, "Go to Declaration")
+      map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, "Workspace Add Folder")
+      map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, "Workspace Remove Folder")
+      map(
+        "n",
         "<leader>wl",
         function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
         "Workspace List Folders"
