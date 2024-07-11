@@ -1,7 +1,6 @@
 return {
   "nvim-neo-tree/neo-tree.nvim",
   branch = "v3.x",
-  priority = 900,
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-tree/nvim-web-devicons",
@@ -56,24 +55,18 @@ return {
           mappings = {
             ["[g"] = "",
             ["]g"] = "",
-            ["[c"] = "prev_git_modified",
-            ["]c"] = "next_git_modified",
+            ["[h"] = "prev_git_modified",
+            ["]h"] = "next_git_modified",
           },
         },
-        hijack_netrw_behavior = "open_current",
+        hijack_netrw_behavior = "disabled",
       },
     })
     vim.keymap.set(
       "n",
-      "<leader>F",
+      "<leader>f",
       "<cmd>Neotree toggle<cr>",
       { desc = "File explorer on the right" }
-    )
-    vim.keymap.set(
-      "n",
-      "<leader>f",
-      "<cmd>Neotree current<cr>",
-      { desc = "File explorer full screen" }
     )
   end,
 }
