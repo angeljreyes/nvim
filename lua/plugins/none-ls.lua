@@ -5,10 +5,9 @@ return {
     local btins = null_ls.builtins
     null_ls.setup({
       sources = {
+        btins.formatting.csharpier,
         btins.formatting.stylua,
-
         btins.formatting.isort,
-
         btins.formatting.prettier.with({
           extra_filetypes = { "angular" },
         }),
