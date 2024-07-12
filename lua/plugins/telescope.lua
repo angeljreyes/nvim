@@ -105,6 +105,9 @@ return {
           },
         },
         extensions = {
+          ["ui-select"] = {
+            require("telescope.themes").get_dropdown()
+          },
           project = {
             on_project_selected = function(prompt_bufnr)
               project_actions.change_working_directory(prompt_bufnr, false)
@@ -115,7 +118,7 @@ return {
           },
         },
       })
-
+      require("telescope").load_extension("ui-select")
       require("telescope").load_extension("project")
       vim.keymap.set(
         "n",
@@ -155,6 +158,9 @@ return {
       vim.keymap.set("n", "<leader>sr", tcbi.resume, { desc = "Search Resume" })
       vim.keymap.set("n", "<leader>sk", tcbi.keymaps, { desc = "Search Keymaps" })
     end,
+  },
+  {
+    "nvim-telescope/telescope-ui-select.nvim",
   },
   {
     "linux-cultist/venv-selector.nvim",
