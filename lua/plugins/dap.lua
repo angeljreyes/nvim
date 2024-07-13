@@ -42,7 +42,7 @@ return {
           require("mason-nvim-dap").default_setup(config)
         end,
         python = function(config)
-          local cmd = vim.loop.os_uname().sysname == "Windows_NT" and "py" or "python3"
+          local cmd = vim.uv.os_uname().sysname == "Windows_NT" and "py" or "python3"
           config.adapters = {
             type = "executable",
             command = cmd,
