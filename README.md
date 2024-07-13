@@ -13,13 +13,22 @@ Neovim >= 0.10.0 `winget install neovim`
 - tree-sitter-cli (for treesitter) `npm i -g tree-sitter-cli`
   - Node.js & NPM (for markdown-preview and coc) `winget install openjs.nodejs.lts`
 
-## Linux Dependencies
+## Debian Based Dependencies
+Neovim >= 0.10.0
+```sh
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+sudo rm -rf /opt/nvim-linux64
+sudo tar -C /opt -xzf nvim-linux64.tar.gz
+sudo ln -s /opt/nvim-linux64/bin/nvim /usr/local/bin/nvim
+```
+
 - [Nerd font](https://www.nerdfonts.com/font-downloads)
-- fd (for Telescope and VenvSelect) `sudo apt install fd-find && echo 'alias fd="fdfind"' >> ~/.zshrc`
+- [fd](https://github.com/sharkdp/fd/releases/latest) (for Telescope and VenvSelect)
+  Recommended version ends with `x86_64-unknown-linux-gnu.tar.gz `. `.deb` might be broken
 - [Ripgrep](https://github.com/BurntSushi/ripgrep/releases) (for Telescope)
-- Node.js & NPM (for markdown-preview and coc)
+- Node.js & NPM (for markdown-preview)
   - Node Version Manager
-    ```
+    ```sh
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
     nvm install --lts
     ```
