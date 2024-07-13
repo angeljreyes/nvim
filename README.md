@@ -2,7 +2,7 @@
 Heavily based on [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim), but modularized and with more plugins.
 
 ## Windows Dependencies
-Neovim `winget install neovim`
+Neovim >= 0.10.0 `winget install neovim`
 
 - Git (for Lazy) `winget install git.git`
 - [Nerd font](https://www.nerdfonts.com/font-downloads)
