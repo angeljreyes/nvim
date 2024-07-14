@@ -146,6 +146,8 @@ return {
       vim.keymap.set("n", "<leader>sd", tcbi.diagnostics, { desc = "Search Diagnostics" })
       vim.keymap.set("n", "<leader>sr", tcbi.resume, { desc = "Search Resume" })
       vim.keymap.set("n", "<leader>sk", tcbi.keymaps, { desc = "Search Keymaps" })
+      vim.keymap.set("n", "<leader>gc", tcbi.git_bcommits, { desc = "Git Commits on current buffer" })
+      vim.keymap.set("n", "<leader>gC", tcbi.git_commits, { desc = "Git Commits" })
     end,
   },
 
