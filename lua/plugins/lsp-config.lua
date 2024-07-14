@@ -92,12 +92,6 @@ return {
         function() vim.diagnostic.open_float({ border = "rounded" }) end,
         { desc = "Open floating diagnostic message" }
       )
-      vim.keymap.set(
-        "n",
-        "<leader>q",
-        vim.diagnostic.setloclist,
-        { desc = "Open diagnostics list" }
-      )
 
       require("mason").setup({
         ui = {
