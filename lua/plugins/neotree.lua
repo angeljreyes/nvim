@@ -65,7 +65,7 @@ return {
     vim.keymap.set(
       "n",
       "<leader>f",
-      "<cmd>Neotree toggle<cr>",
+      "<cmd>Neotree toggle position=right<cr>",
       { desc = "File explorer on the right" }
     )
   end,
