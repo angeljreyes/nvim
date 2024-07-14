@@ -37,26 +37,18 @@ return {
           vim.keymap.set(mode, keys, func, { buffer = bufnr, desc = desc })
         end
 
+        local builtin = require("telescope.builtin")
+
         map("n", "<leader>cr", vim.lsp.buf.rename, "Code Rename")
         map("n", "<leader>ca", vim.lsp.buf.code_action, "Code Action")
         map("i", "<c-.>", vim.lsp.buf.code_action, "Code Action")
 
-        map("n", "gd", require("telescope.builtin").lsp_definitions, "Go to Definition")
-        map("n", "gr", require("telescope.builtin").lsp_references, "Go to References")
-        map("n", "gI", require("telescope.builtin").lsp_implementations, "Go to Implementation")
-        map("n", "<leader>D", require("telescope.builtin").lsp_type_definitions, "type Definition")
-        map(
-          "n",
-          "<leader>cs",
-          require("telescope.builtin").lsp_document_symbols,
-          "Document Symbols"
-        )
-        map(
-          "n",
-          "<leader>ws",
-          require("telescope.builtin").lsp_dynamic_workspace_symbols,
-          "Workspace Symbols"
-        )
+        map("n", "gd", builtin.lsp_definitions, "Go to Definition")
+        map("n", "gr", builtin.lsp_references, "Go to References")
+        map("n", "gI", builtin.lsp_implementations, "Go to Implementation")
+        map("n", "<leader>D", builtin.lsp_type_definitions, "type Definition")
+        map("n", "<leader>cs", builtin.lsp_document_symbols, "Document Symbols")
+        map("n", "<leader>ws", builtin.lsp_dynamic_workspace_symbols, "Workspace Symbols")
 
         -- See `:help K` for why this keymap
         map("n", "K", vim.lsp.buf.hover, "Hover Documentation")

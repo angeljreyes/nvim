@@ -2,8 +2,8 @@ return {
   {
     "tpope/vim-fugitive",
     config = function()
-      vim.keymap.set("n", "<leader>gs", vim.cmd.Git, { desc = "Git Status" })
-      vim.keymap.set("n", "<leader>gl", function() vim.cmd.Git("log") end, { desc = "Git Log" })
+      vim.keymap.set("n", "<leader>gs", "<cmd>Git<cr>", { desc = "Git Status" })
+      vim.keymap.set("n", "<leader>gl", "<cmd>Git log<cr>", { desc = "Git Log" })
     end,
   },
 
@@ -78,7 +78,7 @@ return {
         map("n", "<leader>gd", gs.toggle_deleted, { desc = "toggle git show deleted" })
 
         -- Text object
-        map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", { desc = "select git hunk" })
+        map({ "o", "x" }, "ih", ":<c-u>Gitsigns select_hunk<cr>", { desc = "select git hunk" })
       end,
     },
   },
