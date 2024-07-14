@@ -105,7 +105,7 @@ return {
         },
         extensions = {
           ["ui-select"] = {
-            require("telescope.themes").get_dropdown()
+            require("telescope.themes").get_dropdown(),
           },
         },
       })
@@ -130,11 +130,16 @@ return {
       vim.keymap.set("n", "<leader>sw", tcbi.grep_string, { desc = "Search current Word" })
       vim.keymap.set("n", "<leader>sg", tcbi.live_grep, { desc = "Search by Grep" })
       vim.keymap.set("n", "<leader>sq", tcbi.quickfix, { desc = "Search the quickfix list" })
-      vim.keymap.set("n", "<leader>sQ", tcbi.quickfixhistory, { desc = "Search the quickfix history" })
+      vim.keymap.set(
+        "n",
+        "<leader>sQ",
+        tcbi.quickfixhistory,
+        { desc = "Search the quickfix history" }
+      )
       vim.keymap.set("n", "<leader>sl", tcbi.loclist, { desc = "Search the location list history" })
       vim.keymap.set(
         "n",
-        "<leader>sL",
+        "<leader>sG",
         "<cmd>LiveGrepGitRoot<cr>",
         { desc = "Search by Live grep on git goot" }
       )
@@ -143,9 +148,11 @@ return {
       vim.keymap.set("n", "<leader>sk", tcbi.keymaps, { desc = "Search Keymaps" })
     end,
   },
+
   {
     "nvim-telescope/telescope-ui-select.nvim",
   },
+
   {
     "linux-cultist/venv-selector.nvim",
     enabled = vim.env.NVIM_PROFILE == "home",
