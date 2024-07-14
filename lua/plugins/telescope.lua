@@ -89,7 +89,6 @@ return {
       },
     },
     config = function()
-      local project_actions = require("telescope._extensions.project.actions")
       require("telescope").setup({
         defaults = {
           mappings = {
@@ -108,24 +107,9 @@ return {
           ["ui-select"] = {
             require("telescope.themes").get_dropdown()
           },
-          project = {
-            on_project_selected = function(prompt_bufnr)
-              project_actions.change_working_directory(prompt_bufnr, false)
-              check_venv()
-              vim.api.nvim_command("Neotree current")
-              require("telescope.builtin").find_files()
-            end,
-          },
         },
       })
       require("telescope").load_extension("ui-select")
-      require("telescope").load_extension("project")
-      vim.keymap.set(
-        "n",
-        "<leader>sp",
-        function() require("telescope").extensions.project.project({ display_type = "full" }) end,
-        { desc = "Search Projects" }
-      )
       pcall(require("telescope").load_extension, "fzf")
       vim.api.nvim_create_user_command("LiveGrepGitRoot", live_grep_git_root, {})
 
