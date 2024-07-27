@@ -1,4 +1,3 @@
--- TODO: asdf
 return {
   { "nvim-tree/nvim-web-devicons" },
 
