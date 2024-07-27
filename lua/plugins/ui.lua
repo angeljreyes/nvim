@@ -44,7 +44,7 @@ return {
           "encoding",
           function()
             if vim.bo.expandtab then
-              return "spaces"
+              return vim.bo.shiftwidth .. " spaces"
             else
               return "tabs"
             end
