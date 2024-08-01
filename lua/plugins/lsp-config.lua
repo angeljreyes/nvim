@@ -126,8 +126,8 @@ return {
         } or nil,
         jsonls = {},
         clangd = vim.env.NVIM_PROFILE == "home" and {} or nil,
-        pyright = vim.env.NVIM_PROFILE == "home" and {} or nil,
-        ruff_lsp = vim.env.NVIM_PROFILE == "home" and {} or nil,
+        pyright = {},
+        ruff_lsp = {},
         lua_ls = {
           Lua = {
             workspace = { checkThirdParty = false },
