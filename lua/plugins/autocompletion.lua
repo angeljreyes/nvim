@@ -56,5 +56,9 @@ return {
         { name = "lazydev", group_index = 0 },
       },
     })
+
+    if vim.env.NVIM_PROFILE ~= "home" then
+      require("thiswillbeaplugin")
+    end
   end,
 }
