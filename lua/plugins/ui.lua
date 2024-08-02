@@ -1,4 +1,8 @@
 return {
+  { "jlcrochet/vim-razor" },
+
+  { "OrangeT/vim-csharp" },
+
   { "nvim-tree/nvim-web-devicons" },
 
   {

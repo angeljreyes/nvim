@@ -18,7 +18,7 @@ return {
     require("luasnip.loaders.from_vscode").lazy_load()
     luasnip.config.setup({})
     luasnip.filetype_extend("angular", { "html" })
-    luasnip.filetype_extend("razor", { "html" })
+    luasnip.filetype_extend("razor", { "html", "cs" })
 
     cmp.setup({
       snippet = {
