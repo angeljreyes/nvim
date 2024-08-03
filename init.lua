@@ -18,4 +18,7 @@ if not vim.uv.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup("plugins", { change_detection = { notify = false } })
+require("lazy").setup("plugins", {
+  change_detection = { notify = false },
+  dev = { path = "~/dev/nvim" }
+})
