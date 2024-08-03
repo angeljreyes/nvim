@@ -1,7 +1,9 @@
 return {
   { "williamboman/mason.nvim", config = true },
 
-  { "j-hui/fidget.nvim", opts = {} },
+  { "j-hui/fidget.nvim", config = true },
+
+  { "Issafalcon/lsp-overloads.nvim" },
 
   {
     "williamboman/mason-lspconfig.nvim",
@@ -28,7 +30,7 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
-      local on_attach = function(_, bufnr)
+      local on_attach = function(client, bufnr)
         local map = function(mode, keys, func, desc)
           if desc then
             desc = "LSP: " .. desc
@@ -64,6 +66,20 @@ return {
           function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
           "Workspace List Folders"
         )
+
+        if client.server_capabilities.signatureHelpProvider then
+          require("lsp-overloads").setup(client, {
+            ui = {
+              border = "rounded",
+            },
+          })
+          vim.keymap.set(
+            "n",
+            "<a-s>",
+            ":LspOverloadsSignature<cr>",
+            { noremap = true, silent = true, buffer = bufnr }
+          )
+        end
 
         -- Create a command `:Format` local to the LSP buffer
         vim.api.nvim_buf_create_user_command(
