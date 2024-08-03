@@ -6,15 +6,6 @@ return {
   { "nvim-tree/nvim-web-devicons" },
 
   {
-    "OXY2DEV/markview.nvim",
-    ft = "markdown",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "nvim-tree/nvim-web-devicons",
-    },
-  },
-
-  {
     "folke/todo-comments.nvim",
     enabled = vim.env.NVIM_PROFILE == "home",
     dependencies = { "nvim-lua/plenary.nvim" },
