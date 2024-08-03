@@ -1,5 +1,21 @@
 return {
   {
+    "Wansmer/treesj",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    config = function()
+      local tsj = require("treesj")
+      tsj.setup({ use_default_keymaps = false })
+      vim.keymap.set("n", "<leader>m", tsj.toggle, { desc = "Toggle node line splitting" })
+      vim.keymap.set(
+        "n",
+        "<leader>M",
+        function() tsj.toggle({ split = { recursive = true } }) end,
+        { desc = "Toggle node line splitting recursively" }
+      )
+    end,
+  },
+
+  {
     "nvim-treesitter/nvim-treesitter",
     dependencies = {
       "nvim-treesitter/nvim-treesitter-context",
@@ -100,7 +116,7 @@ return {
       parser_config.monkey = {
         install_info = {
           url = "https://github.com/jamestrew/tree-sitter-monkey.git",
-          files = {"src/parser.c"},
+          files = { "src/parser.c" },
         },
         filetype = "mon",
       }
