@@ -58,7 +58,7 @@ return {
     })
 
     if vim.env.NVIM_PROFILE ~= "home" then
-      require("thiswillbeaplugin")
+      require("thiswillbeaplugin").setup()
     end
   end,
 }
