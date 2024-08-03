@@ -22,7 +22,7 @@ return {
         end
 
         -- Navigation
-        map({ "n", "v" }, "]h", function()
+        map({ "n", "v" }, "]c", function()
           if vim.wo.diff then
             return "]c"
           end
@@ -30,7 +30,7 @@ return {
           return "<Ignore>"
         end, { expr = true, desc = "Jump to next hunk" })
 
-        map({ "n", "v" }, "[h", function()
+        map({ "n", "v" }, "[c", function()
           if vim.wo.diff then
             return "[c"
           end
