@@ -1,10 +1,11 @@
 vim.filetype.add({
   filename = {
     ["picom.conf"] = "cfg",
+    ["requirements.txt"] = "requirements",
   },
   pattern = {
-    ["req.*.txt"] = "requirements",
-    [".*component.html"] = "angular",
+    [".*component%.html"] = "angular",
+    ["appsettings.*%.json"] = "jsonc",
   },
   extension = {
     mon = "monkey",
