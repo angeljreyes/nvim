@@ -32,3 +32,9 @@ sudo ln -s /opt/nvim-linux64/bin/nvim /usr/local/bin/nvim
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
     nvm install --lts
     ```
+
+## Arch Linux Dependencies
+You can read or run [this script](https://github.com/DestopLine/dotfiles/blob/master/scripts/scripts/archdeps/nvim.sh):
+```sh
+curl -o- https://raw.githubusercontent.com/DestopLine/dotfiles/master/scripts/scripts/archdeps/nvim.sh | bash
+```
