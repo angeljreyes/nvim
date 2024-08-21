@@ -2,6 +2,9 @@ return {
   {
     "OXY2DEV/markview.nvim",
     ft = "markdown",
+    keys = {
+      { "<leader>m", "<cmd>Markview<cr>", desc = "Toggle Markview", ft = "markdown" },
+    },
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "nvim-tree/nvim-web-devicons",
