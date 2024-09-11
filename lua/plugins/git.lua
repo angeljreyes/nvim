@@ -74,7 +74,7 @@ return {
         )
 
         -- Toggles
-        map("n", "<leader>gb", gs.toggle_current_line_blame, { desc = "toggle git blame line" })
+        map("n", "<leader>gb", "<cmd>Git blame<cr><c-w>l", { desc = "git blame" })
         map("n", "<leader>gd", gs.toggle_deleted, { desc = "toggle git show deleted" })
 
         -- Text object
