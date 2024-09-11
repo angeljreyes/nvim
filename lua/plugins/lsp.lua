@@ -127,6 +127,9 @@ return {
         rust_analyzer = vim.env.NVIM_PROFILE == "home" and {} or nil,
         omnisharp = {
           filetypes = { "csx", "cs" },
+          RoslynExtensionsOptions = {
+            EnableImportCompletion = true,
+          },
         },
         tsserver = vim.env.NVIM_PROFILE == "home" and {} or nil,
         angularls = vim.env.NVIM_PROFILE == "home" and {
