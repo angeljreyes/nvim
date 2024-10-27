@@ -20,5 +20,5 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins", {
   change_detection = { notify = false },
-  dev = { path = "~/dev/nvim" }
+  dev = { path = "~/dev/nvim" },
 })

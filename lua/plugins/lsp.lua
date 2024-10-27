@@ -131,7 +131,7 @@ return {
             EnableImportCompletion = true,
           },
         },
-        tsserver = vim.env.NVIM_PROFILE == "home" and {} or nil,
+        ts_ls = vim.env.NVIM_PROFILE == "home" and {} or nil,
         angularls = vim.env.NVIM_PROFILE == "home" and {
           filetypes = { "html", "angular" },
         } or nil,
