@@ -1,3 +1,15 @@
+local function indentation()
+  if vim.bo.expandtab then
+    return vim.bo.shiftwidth .. " spaces"
+  else
+    return "tabs"
+  end
+end
+
+local function line_amount()
+  return tostring(vim.fn.line("$")) .. "L"
+end
+
 return {
   { "jlcrochet/vim-razor" },
 
@@ -25,6 +37,8 @@ return {
       options = {
         icons_enabled = true,
         theme = "auto",
+        section_separators = { left = "", right = "" },
+        component_separators = { left = "/", right = "/" },
       },
       sections = {
         lualine_c = {
@@ -42,25 +56,24 @@ return {
         },
         lualine_x = {
           "encoding",
-          function()
-            if vim.bo.expandtab then
-              return vim.bo.shiftwidth .. " spaces"
-            else
-              return "tabs"
-            end
-          end,
+          indentation,
           {
             "fileformat",
             symbols = {
-              unix = "lf",
-              dos = "crlf",
-              mac = "cr",
+              unix = "unix",
+              dos = "dos",
+              mac = "mac",
             },
           },
           "filetype",
         },
-        lualine_y = { "progress", "location" },
-        lualine_z = {},
+        lualine_y = {
+          line_amount,
+          "progress",
+        },
+        lualine_z = {
+          "location",
+        },
       },
       inactive_sections = {
         lualine_c = {
