@@ -18,6 +18,17 @@ return {
   { "nvim-tree/nvim-web-devicons" },
 
   {
+    "mcauley-penney/visual-whitespace.nvim",
+    config = function()
+      local bg = vim.api.nvim_get_hl(0, { name = "Visual" }).bg
+      local fg = vim.api.nvim_get_hl(0, { name = "NonText" }).fg
+      require("visual-whitespace").setup({
+        highlight = { bg = bg, fg = fg }
+      })
+    end,
+  },
+
+  {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()

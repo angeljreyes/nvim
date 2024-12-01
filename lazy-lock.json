@@ -57,5 +57,6 @@
   "vim-razor": { "branch": "master", "commit": "305dd1db88c657c0c02effbee1a88048479bb0c4" },
   "vim-rhubarb": { "branch": "master", "commit": "ee69335de176d9325267b0fd2597a22901d927b1" },
   "vim-sleuth": { "branch": "master", "commit": "be69bff86754b1aa5adcbb527d7fcd1635a84080" },
+  "visual-whitespace.nvim": { "branch": "main", "commit": "76cffcf1523e8949c2cf9909915ec91e5d17972b" },
   "which-key.nvim": { "branch": "main", "commit": "8badb359f7ab8711e2575ef75dfe6fbbd87e4821" }
 }
