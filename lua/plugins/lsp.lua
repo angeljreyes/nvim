@@ -42,7 +42,7 @@ return {
         local builtin = require("telescope.builtin")
 
         map("n", "<leader>cr", vim.lsp.buf.rename, "Code Rename")
-        map("n", "<leader>ca", vim.lsp.buf.code_action, "Code Action")
+        map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code Action")
         map("i", "<c-.>", vim.lsp.buf.code_action, "Code Action")
 
         map("n", "gd", builtin.lsp_definitions, "Go to Definition")
