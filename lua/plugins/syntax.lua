@@ -12,4 +12,9 @@ return {
     main = "ibl",
     opts = {},
   },
+
+  {
+    "windwp/nvim-ts-autotag",
+    config = true,
+  },
 }
