@@ -4,6 +4,7 @@
   "auto-pairs": { "branch": "master", "commit": "39f06b873a8449af8ff6a3eee716d3da14d63a76" },
   "boilersharp.nvim": { "branch": "master", "commit": "c503a0feafe2175a8d0b2270e7fa45111a4ea5f5" },
   "catppuccin": { "branch": "main", "commit": "cf021ebfb1e400a5fd1615cbda024308ca589b18" },
+  "ccc.nvim": { "branch": "main", "commit": "7c639042583c7bdc7ce2e37e5a0e0aa6d0659c6a" },
   "cmp-nvim-lsp": { "branch": "main", "commit": "39e2eda76828d88b773cc27a3f61d2ad782c922d" },
   "cmp-path": { "branch": "main", "commit": "91ff86cd9c29299a64f968ebb45846c485725f23" },
   "cmp_luasnip": { "branch": "master", "commit": "05a9ab28b53f71d1aece421ef32fee2cb857a843" },
