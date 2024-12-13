@@ -17,4 +17,10 @@ return {
     "windwp/nvim-ts-autotag",
     config = true,
   },
+
+  {
+    "kylechui/nvim-surround",
+    event = "VeryLazy",
+    config = true,
+  },
 }
