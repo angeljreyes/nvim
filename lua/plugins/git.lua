@@ -22,6 +22,12 @@ return {
         log_view = {
           kind = "floating",
         },
+        mappings = {
+          commit_editor = {
+            ["<c-c><c-c>"] = false,
+            ["<c-c><c-k>"] = false,
+          },
+        },
       })
     end,
   },
