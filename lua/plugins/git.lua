@@ -9,7 +9,7 @@ return {
     config = function()
       local neogit = require("neogit")
 
-      vim.keymap.set("n", "<leader>gs", neogit.open, { desc = "Git Status" })
+      vim.keymap.set("n", "<leader>g", neogit.open, { desc = "Git" })
 
       neogit.setup({
         kind = "floating",
@@ -97,8 +97,7 @@ return {
         )
 
         -- Toggles
-        map("n", "<leader>gb", "<cmd>Git blame<cr><c-w>l", { desc = "git blame" })
-        map("n", "<leader>gd", gs.toggle_deleted, { desc = "toggle git show deleted" })
+        map("n", "<leader>hb", gs.blame, { desc = "Git Blame" })
 
         -- Text object
         map({ "o", "x" }, "ih", ":<c-u>Gitsigns select_hunk<cr>", { desc = "select git hunk" })
