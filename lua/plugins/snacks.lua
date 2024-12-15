@@ -39,8 +39,6 @@ return {
         },
       },
 
-      indent = { enabled = false },
-
       input = {
         enabled = true,
         win = {
@@ -53,7 +51,6 @@ return {
       },
 
       notifier = { enabled = true },
-      quickfile = { enabled = false },
 
       scroll = {
         enabled = true,
@@ -69,9 +66,6 @@ return {
           return not vim.endswith(vim.api.nvim_buf_get_name(buf), "NeogitLogView")
         end
       },
-
-      statuscolumn = { enabled = false },
-      words = { enabled = false },
     })
   end,
 }
