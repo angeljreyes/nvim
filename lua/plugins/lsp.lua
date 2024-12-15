@@ -146,7 +146,7 @@ return {
         jsonls = {},
         clangd = vim.env.NVIM_PROFILE == "home" and {} or nil,
         pyright = {},
-        ruff_lsp = {},
+        ruff = {},
         lua_ls = {
           Lua = {
             workspace = { checkThirdParty = false },
@@ -166,6 +166,7 @@ return {
 
       mason_lspconfig.setup({
         ensure_installed = vim.tbl_keys(servers),
+        automatic_installation = true,
       })
 
       mason_lspconfig.setup_handlers({
