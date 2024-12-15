@@ -92,10 +92,17 @@ return {
       local actions = require("telescope.actions")
       require("telescope").setup({
         defaults = {
+          scroll_strategy = "limit",
           mappings = {
             i = {
-              ["<c-u>"] = false,
-              ["<c-d>"] = false,
+              ["<pageup>"] = false,
+              ["<pagedown>"] = false,
+              ["<c-u>"] = actions.results_scrolling_up,
+              ["<c-d>"] = actions.results_scrolling_down,
+              ["<c-k>"] = actions.preview_scrolling_up,
+              ["<c-j>"] = actions.preview_scrolling_down,
+              ["<m-p>"] = actions.move_to_top,
+              ["<m-n>"] = actions.move_to_bottom,
               ["<c-y>"] = actions.select_default,
               ["<c-q>"] = actions.smart_send_to_qflist,
               ["<m-q>"] = actions.smart_add_to_qflist,
