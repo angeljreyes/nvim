@@ -97,6 +97,8 @@ return {
             i = {
               ["<pageup>"] = false,
               ["<pagedown>"] = false,
+              ["<c-x>"] = false,
+              ["<c-s>"] = actions.select_horizontal,
               ["<c-u>"] = actions.results_scrolling_up,
               ["<c-d>"] = actions.results_scrolling_down,
               ["<c-k>"] = actions.preview_scrolling_up,
