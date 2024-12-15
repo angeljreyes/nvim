@@ -1,13 +1,30 @@
 return {
   {
-    "tpope/vim-fugitive",
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "sindrets/diffview.nvim",
+      "nvim-telescope/telescope.nvim",
+    },
     config = function()
-      vim.keymap.set("n", "<leader>gs", "<cmd>wa<cr><cmd>Git<cr>", { desc = "Git Status" })
-      vim.keymap.set("n", "<leader>gl", "<cmd>Git log<cr>", { desc = "Git Log" })
+      local neogit = require("neogit")
+
+      vim.keymap.set("n", "<leader>gs", neogit.open, { desc = "Git Status" })
+
+      neogit.setup({
+        kind = "floating",
+        graph_style = "unicode",
+        signs = {
+          hunk = { "", "" },
+          item = { "", "" },
+          section = { "", "" },
+        },
+        log_view = {
+          kind = "floating",
+        },
+      })
     end,
   },
-
-  { "tpope/vim-rhubarb" },
 
   {
     "lewis6991/gitsigns.nvim",

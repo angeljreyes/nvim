@@ -64,6 +64,10 @@ return {
           },
           easing = "inOutCubic",
         },
+        filter = function(buf)
+          -- Neogit Log View scrolling gets glitchy with this plugin enabled
+          return not vim.endswith(vim.api.nvim_buf_get_name(buf), "NeogitLogView")
+        end
       },
 
       statuscolumn = { enabled = false },
