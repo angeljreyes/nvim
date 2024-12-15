@@ -89,17 +89,28 @@ return {
       },
     },
     config = function()
+      local actions = require("telescope.actions")
       require("telescope").setup({
         defaults = {
           mappings = {
             i = {
-              ["<C-u>"] = false,
-              ["<C-d>"] = false,
-              ["<C-y>"] = require("telescope.actions").select_default,
-              ["<C-q>"] = require("telescope.actions").smart_send_to_qflist,
-              ["<M-q>"] = require("telescope.actions").smart_add_to_qflist,
-              ["<C-o>"] = require("telescope.actions").smart_send_to_loclist,
-              ["<M-o>"] = require("telescope.actions").smart_add_to_loclist,
+              ["<c-u>"] = false,
+              ["<c-d>"] = false,
+              ["<c-y>"] = actions.select_default,
+              ["<c-q>"] = actions.smart_send_to_qflist,
+              ["<m-q>"] = actions.smart_add_to_qflist,
+              ["<c-o>"] = actions.smart_send_to_loclist,
+              ["<m-o>"] = actions.smart_add_to_loclist,
+            },
+          },
+        },
+        pickers = {
+          help_tags = {
+            mappings = {
+              i = {
+                ["<cr>"] = actions.select_vertical,
+                ["<c-y>"] = actions.select_vertical,
+              },
             },
           },
         },
