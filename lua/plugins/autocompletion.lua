@@ -1,17 +1,8 @@
 return {
   {
     "DestopLine/boilersharp.nvim",
-    dev = false,
-    dependencies = {
-      "L3MON4D3/LuaSnip"
-    },
-    config = function()
-      require("boilersharp").setup({
-        add_usings = "csproj",
-        use_file_scoped_namespaces = "csproj",
-        auto_mode = "on_empty",
-      })
-    end,
+    dev = vim.env.NVIM_PROFILE == "home",
+    config = true,
   },
 
   {

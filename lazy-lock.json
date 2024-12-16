@@ -1,7 +1,7 @@
 {
   "Comment.nvim": { "branch": "master", "commit": "e30b7f2008e52442154b66f7c519bfd2f1e32acb" },
-  "boilersharp.nvim": { "branch": "master", "commit": "c503a0feafe2175a8d0b2270e7fa45111a4ea5f5" },
   "LuaSnip": { "branch": "master", "commit": "33b06d72d220aa56a7ce80a0dd6f06c70cd82b9d" },
+  "boilersharp.nvim": { "branch": "master", "commit": "01c489d14d60a648aa4860ae4fe1daa279851314" },
   "catppuccin": { "branch": "main", "commit": "faf15ab0201b564b6368ffa47b56feefc92ce3f4" },
   "ccc.nvim": { "branch": "main", "commit": "7c639042583c7bdc7ce2e37e5a0e0aa6d0659c6a" },
   "cmp-nvim-lsp": { "branch": "main", "commit": "99290b3ec1322070bcfb9e846450a46f6efa50f0" },
