@@ -19,6 +19,10 @@ return {
           item = { "", "" },
           section = { "", "" },
         },
+        commit_editor = {
+          kind = "tab",
+          spell_check = false,
+        },
         log_view = {
           kind = "floating",
         },
