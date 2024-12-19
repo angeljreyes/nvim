@@ -1,11 +1,5 @@
 return {
   {
-    "DestopLine/boilersharp.nvim",
-    dev = vim.env.NVIM_PROFILE == "home",
-    config = true,
-  },
-
-  {
     "hrsh7th/nvim-cmp",
     dependencies = {
       -- Snippet Engine & its associated nvim-cmp source

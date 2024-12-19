@@ -11,10 +11,6 @@ local function line_amount()
 end
 
 return {
-  { "jlcrochet/vim-razor" },
-
-  { "OrangeT/vim-csharp" },
-
   { "nvim-tree/nvim-web-devicons" },
 
   {
