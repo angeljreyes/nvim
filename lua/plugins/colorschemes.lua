@@ -1,4 +1,4 @@
-local transparency = vim.env.NVIM_PROFILE == "home"
+local transparency = Utils.is_profile("home")
 
 return {
   {

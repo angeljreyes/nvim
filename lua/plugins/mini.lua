@@ -2,6 +2,6 @@ return {
   {
     "echasnovski/mini.test",
     config = true,
-    enabled = vim.env.NVIM_PROFILE == "home",
+    enabled = Utils.is_profile("home"),
   },
 }

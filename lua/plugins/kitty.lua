@@ -1,6 +1,6 @@
 return {
   "mikesmithgh/kitty-scrollback.nvim",
-  enabled = vim.env.NVIM_PROFILE == "home",
+  enabled = Utils.is_profile("home"),
   lazy = true,
   cmd = { "KittyScrollbackGenerateKittens", "KittyScrollbackCheckHealth" },
   event = { "User KittyScrollbackLaunch" },

@@ -1,6 +1,6 @@
 return {
   "3rd/image.nvim",
-  enabled = vim.env.NVIM_PROFILE == "home",
+  enabled = Utils.is_profile("home"),
   opts = {
     backend = "kitty",
   },

@@ -124,18 +124,18 @@ return {
         -- gopls = {},
         -- html = { filetypes = { "html", "twig", "hbs"} },
 
-        rust_analyzer = vim.env.NVIM_PROFILE == "home" and {} or nil,
+        rust_analyzer = Utils.is_profile("home") and {} or nil,
         omnisharp = {
           filetypes = { "csx", "cs" },
           RoslynExtensionsOptions = {
             EnableImportCompletion = true,
           },
         },
-        ts_ls = vim.env.NVIM_PROFILE == "home" and {} or nil,
-        angularls = vim.env.NVIM_PROFILE == "home" and {
+        ts_ls = Utils.is_profile("home") and {} or nil,
+        angularls = Utils.is_profile("home") and {
           filetypes = { "html", "angular" },
         } or nil,
-        tailwindcss = vim.env.NVIM_PROFILE == "home" and {
+        tailwindcss = Utils.is_profile("home") and {
           filetypes = { "html", "angular" },
           init_options = {
             userLanguages = {
@@ -144,7 +144,7 @@ return {
           },
         } or nil,
         jsonls = {},
-        clangd = vim.env.NVIM_PROFILE == "home" and {} or nil,
+        clangd = Utils.is_profile("home") and {} or nil,
         pyright = {},
         ruff = {},
         lua_ls = {
