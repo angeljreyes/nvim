@@ -9,6 +9,9 @@ return {
   },
 
   config = function()
+    -- This stops luals from throwing warnings
+    Snacks = require("snacks")
+
     vim.api.nvim_create_user_command("Q", function(cmd_opts) Snacks.bufdelete({ force = cmd_opts.bang }) end, {
       desc = "Delete the current buffer without closing the current window",
       bang = true,
@@ -55,6 +58,7 @@ return {
       scroll = {
         enabled = true,
         animate = {
+          fps = 60,
           duration = {
             step = 10,
             total = 150,
