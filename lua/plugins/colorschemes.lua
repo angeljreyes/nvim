@@ -1,4 +1,5 @@
-local transparency = Utils.is_profile("home")
+-- local transparency = Utils.is_profile("home")
+local transparency = false
 
 return {
   {
