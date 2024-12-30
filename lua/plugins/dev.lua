@@ -1,4 +1,6 @@
 return {
+  { "tweekmonster/helpful.vim" },
+
   {
     "echasnovski/mini.test",
     config = true,
