@@ -9,7 +9,10 @@ return {
     config = function()
       local neogit = require("neogit")
 
-      vim.keymap.set("n", "<leader>g", neogit.open, { desc = "Git" })
+      vim.keymap.set("n", "<leader>g", function()
+        vim.cmd(":wa")
+        neogit.open()
+      end, { desc = "Git" })
 
       neogit.setup({
         kind = "floating",
@@ -86,19 +89,9 @@ return {
         map("n", "<leader>hu", gs.undo_stage_hunk, { desc = "undo stage hunk" })
         map("n", "<leader>hR", gs.reset_buffer, { desc = "git Reset buffer" })
         map("n", "<leader>hp", gs.preview_hunk, { desc = "preview git hunk" })
-        map(
-          "n",
-          "<leader>hb",
-          function() gs.blame_line({ full = false }) end,
-          { desc = "git blame line" }
-        )
+        map("n", "<leader>hb", function() gs.blame_line({ full = false }) end, { desc = "git blame line" })
         map("n", "<leader>hd", gs.diffthis, { desc = "git diff against index" })
-        map(
-          "n",
-          "<leader>hD",
-          function() gs.diffthis("~") end,
-          { desc = "git diff against last commit" }
-        )
+        map("n", "<leader>hD", function() gs.diffthis("~") end, { desc = "git diff against last commit" })
 
         -- Toggles
         map("n", "<leader>hb", gs.blame, { desc = "Git Blame" })
