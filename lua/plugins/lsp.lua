@@ -3,8 +3,6 @@ return {
 
   { "j-hui/fidget.nvim", config = true },
 
-  { "Issafalcon/lsp-overloads.nvim" },
-
   {
     "williamboman/mason-lspconfig.nvim",
     dependencies = {
@@ -66,20 +64,6 @@ return {
           function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
           "Workspace List Folders"
         )
-
-        if client.server_capabilities.signatureHelpProvider then
-          require("lsp-overloads").setup(client, {
-            ui = {
-              border = "rounded",
-            },
-          })
-          vim.keymap.set(
-            "n",
-            "<a-s>",
-            ":LspOverloadsSignature<cr>",
-            { noremap = true, silent = true, buffer = bufnr }
-          )
-        end
 
         -- Create a command `:Format` local to the LSP buffer
         vim.api.nvim_buf_create_user_command(
@@ -157,9 +141,7 @@ return {
         },
       }
 
-      -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+      local capabilities = require("blink.cmp").get_lsp_capabilities()
 
       -- Ensure the servers above are installed
       local mason_lspconfig = require("mason-lspconfig")
