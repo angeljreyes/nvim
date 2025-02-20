@@ -83,7 +83,6 @@ return {
           },
         },
       })
-      require("mason-lspconfig").setup()
 
       local servers = {
         -- gopls = {},
@@ -122,8 +121,6 @@ return {
         },
       }
 
-      local capabilities = require("blink.cmp").get_lsp_capabilities()
-
       -- Ensure the servers above are installed
       local mason_lspconfig = require("mason-lspconfig")
 
@@ -135,7 +132,7 @@ return {
       mason_lspconfig.setup_handlers({
         function(server_name)
           require("lspconfig")[server_name].setup({
-            capabilities = capabilities,
+            capabilities = require("blink.cmp").get_lsp_capabilities(),
             on_attach = on_lsp_attach,
             settings = servers[server_name],
             filetypes = (servers[server_name] or {}).filetypes,
@@ -144,14 +141,13 @@ return {
         end,
       })
 
-      vim.lsp.handlers["textDocument/publishDiagnostics"] =
-        vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-          virtual_text = true,
-          signs = false,
-          update_in_insert = false,
-          underline = true,
-          severity_sort = true,
-        })
+      vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+        virtual_text = true,
+        signs = false,
+        update_in_insert = false,
+        underline = true,
+        severity_sort = true,
+      })
 
       vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
         border = "rounded",
