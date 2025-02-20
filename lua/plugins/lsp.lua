@@ -1,3 +1,49 @@
+local on_lsp_attach = function(client, bufnr)
+  local map = function(mode, keys, func, desc)
+    if desc then
+      desc = "LSP: " .. desc
+    end
+
+    vim.keymap.set(mode, keys, func, { buffer = bufnr, desc = desc })
+  end
+
+  local builtin = require("telescope.builtin")
+
+  map("n", "<leader>cr", vim.lsp.buf.rename, "Code Rename")
+  map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code Action")
+  map("i", "<c-.>", vim.lsp.buf.code_action, "Code Action")
+
+  map("n", "gd", builtin.lsp_definitions, "Go to Definition")
+  map("n", "gr", builtin.lsp_references, "Go to References")
+  map("n", "gI", builtin.lsp_implementations, "Go to Implementation")
+  map("n", "<leader>D", builtin.lsp_type_definitions, "type Definition")
+  map("n", "<leader>cs", builtin.lsp_document_symbols, "Document Symbols")
+  map("n", "<leader>ws", builtin.lsp_dynamic_workspace_symbols, "Workspace Symbols")
+
+  -- See `:help K` for why this keymap
+  map("n", "K", vim.lsp.buf.hover, "Hover Documentation")
+  map("n", "<c-k>", vim.lsp.buf.signature_help, "Signature Documentation")
+
+  -- Lesser used LSP functionality
+  map("n", "gD", vim.lsp.buf.declaration, "Go to Declaration")
+  map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, "Workspace Add Folder")
+  map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, "Workspace Remove Folder")
+  map(
+    "n",
+    "<leader>wl",
+    function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
+    "Workspace List Folders"
+  )
+
+  -- Create a command `:Format` local to the LSP buffer
+  vim.api.nvim_buf_create_user_command(
+    bufnr,
+    "Format",
+    function(_) vim.lsp.buf.format() end,
+    { desc = "Format current buffer with LSP" }
+  )
+end
+
 return {
   { "williamboman/mason.nvim", config = true },
 
@@ -28,52 +74,6 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
-      local on_attach = function(client, bufnr)
-        local map = function(mode, keys, func, desc)
-          if desc then
-            desc = "LSP: " .. desc
-          end
-
-          vim.keymap.set(mode, keys, func, { buffer = bufnr, desc = desc })
-        end
-
-        local builtin = require("telescope.builtin")
-
-        map("n", "<leader>cr", vim.lsp.buf.rename, "Code Rename")
-        map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code Action")
-        map("i", "<c-.>", vim.lsp.buf.code_action, "Code Action")
-
-        map("n", "gd", builtin.lsp_definitions, "Go to Definition")
-        map("n", "gr", builtin.lsp_references, "Go to References")
-        map("n", "gI", builtin.lsp_implementations, "Go to Implementation")
-        map("n", "<leader>D", builtin.lsp_type_definitions, "type Definition")
-        map("n", "<leader>cs", builtin.lsp_document_symbols, "Document Symbols")
-        map("n", "<leader>ws", builtin.lsp_dynamic_workspace_symbols, "Workspace Symbols")
-
-        -- See `:help K` for why this keymap
-        map("n", "K", vim.lsp.buf.hover, "Hover Documentation")
-        map("n", "<c-k>", vim.lsp.buf.signature_help, "Signature Documentation")
-
-        -- Lesser used LSP functionality
-        map("n", "gD", vim.lsp.buf.declaration, "Go to Declaration")
-        map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, "Workspace Add Folder")
-        map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, "Workspace Remove Folder")
-        map(
-          "n",
-          "<leader>wl",
-          function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
-          "Workspace List Folders"
-        )
-
-        -- Create a command `:Format` local to the LSP buffer
-        vim.api.nvim_buf_create_user_command(
-          bufnr,
-          "Format",
-          function(_) vim.lsp.buf.format() end,
-          { desc = "Format current buffer with LSP" }
-        )
-      end
-
       require("mason").setup({
         ui = {
           icons = {
@@ -136,7 +136,7 @@ return {
         function(server_name)
           require("lspconfig")[server_name].setup({
             capabilities = capabilities,
-            on_attach = on_attach,
+            on_attach = on_lsp_attach,
             settings = servers[server_name],
             filetypes = (servers[server_name] or {}).filetypes,
             init_options = (servers[server_name] or {}).init_options,
