@@ -45,49 +45,32 @@ local on_lsp_attach = function(client, bufnr)
 end
 
 return {
-  { "williamboman/mason.nvim", config = true },
-
   { "j-hui/fidget.nvim", config = true },
 
   {
-    "williamboman/mason-lspconfig.nvim",
-    dependencies = {
-      "williamboman/mason.nvim",
-      "neovim/nvim-lspconfig",
-    },
-  },
-
-  {
-    "folke/lazydev.nvim",
-    ft = "lua",
+    "williamboman/mason.nvim",
     opts = {
-      library = {
-        -- See the configuration section for more details
-        -- Load luvit types when the `vim.uv` word is found
-        { path = "luvit-meta/library", words = { "vim%.uv" } },
+      ui = {
+        icons = {
+          package_pending = " ",
+          package_installed = " ",
+          package_uninstalled = " ",
+        },
       },
     },
   },
 
-  { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
-
   {
-    "neovim/nvim-lspconfig",
+    "williamboman/mason-lspconfig.nvim",
+
+    dependencies = {
+      "williamboman/mason.nvim",
+      "neovim/nvim-lspconfig",
+      "saghen/blink.cmp",
+    },
+
     config = function()
-      require("mason").setup({
-        ui = {
-          icons = {
-            package_pending = " ",
-            package_installed = " ",
-            package_uninstalled = " ",
-          },
-        },
-      })
-
       local servers = {
-        -- gopls = {},
-        -- html = { filetypes = { "html", "twig", "hbs"} },
-
         rust_analyzer = Utils.is_profile("home") and {} or nil,
         omnisharp = {
           filetypes = { "csx", "cs" },
@@ -154,4 +137,18 @@ return {
       })
     end,
   },
+
+  {
+    "folke/lazydev.nvim",
+    ft = "lua",
+    opts = {
+      library = {
+        -- See the configuration section for more details
+        -- Load luvit types when the `vim.uv` word is found
+        { path = "luvit-meta/library", words = { "vim%.uv" } },
+      },
+    },
+  },
+
+  { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
 }
