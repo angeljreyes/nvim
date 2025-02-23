@@ -1,3 +1,9 @@
+---@class (exact) NvimConfig.LanguageServer
+---@field settings? table
+---@field enabled? boolean
+---@field filetypes? string[]
+---@field init_options? table
+
 local on_lsp_attach = function(client, bufnr)
   local map = function(mode, keys, func, desc)
     if desc then
@@ -70,39 +76,50 @@ return {
     },
 
     config = function()
+      ---@type { [string]: NvimConfig.LanguageServer }
       local servers = {
-        rust_analyzer = Utils.is_profile("home") and {} or nil,
+        rust_analyzer = { enabled = Utils.is_profile("home") },
         omnisharp = {
           filetypes = { "csx", "cs" },
-          RoslynExtensionsOptions = {
-            EnableImportCompletion = true,
+          settings = {
+            RoslynExtensionsOptions = {
+              EnableImportCompletion = true,
+            },
           },
         },
-        ts_ls = Utils.is_profile("home") and {} or nil,
-        angularls = Utils.is_profile("home") and {
+        ts_ls = {},
+        html = {},
+        angularls = {
+          enabled = Utils.is_profile("home"),
           filetypes = { "html", "angular" },
-        } or nil,
-        tailwindcss = Utils.is_profile("home") and {
+        },
+        tailwindcss = {
           filetypes = { "html", "angular" },
           init_options = {
             userLanguages = {
               angular = "html",
             },
           },
-        } or nil,
+        },
         jsonls = {},
-        clangd = Utils.is_profile("home") and {} or nil,
+        clangd = { enabled = Utils.is_profile("home") },
         pyright = {},
         ruff = {},
         lua_ls = {
-          Lua = {
-            workspace = { checkThirdParty = false },
-            telemetry = { enable = false },
-            -- NOTE: toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-            -- diagnostics = { disable = { "missing-fields" } },
+          settings = {
+            Lua = {
+              workspace = { checkThirdParty = false },
+              telemetry = { enable = false },
+            },
           },
         },
       }
+
+      for name, server in pairs(servers) do
+        if server.enabled == false then
+          servers[name] = nil
+        end
+      end
 
       -- Ensure the servers above are installed
       local mason_lspconfig = require("mason-lspconfig")
@@ -114,12 +131,18 @@ return {
 
       mason_lspconfig.setup_handlers({
         function(server_name)
+          local server = servers[server_name]
+
+          if server == nil then
+            return
+          end
+
           require("lspconfig")[server_name].setup({
             capabilities = require("blink.cmp").get_lsp_capabilities(),
             on_attach = on_lsp_attach,
-            settings = servers[server_name],
-            filetypes = (servers[server_name] or {}).filetypes,
-            init_options = (servers[server_name] or {}).init_options,
+            settings = server.settings or {},
+            filetypes = server.filetypes,
+            init_options = server.init_options,
           })
         end,
       })
