@@ -39,6 +39,7 @@ vim.opt.titlelen = 0
 vim.opt.titlestring = [[nvim – %{fnamemodify(getcwd(), ':t')}/%t]]
 
 vim.opt.splitright = true
+vim.opt.splitbelow = true
 
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
