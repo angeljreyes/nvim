@@ -11,6 +11,8 @@ vim.filetype.add({
     mon = "monkey",
     rasi = "rasi",
     rasinc = "rasi",
+    razor = "razor",
+    cshtml = "razor",
   },
 })
 
