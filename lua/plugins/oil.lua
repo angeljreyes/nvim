@@ -4,7 +4,12 @@ return {
   priority = 900,
   config = function()
     local oil = require("oil")
-    vim.keymap.set("n", "-", "<cmd>Oil<cr>", { desc = "Open Oil in parent directory" })
+    vim.keymap.set(
+      "n",
+      "-",
+      function() oil.open(nil, { preview = { vertical = true } }) end,
+      { desc = "Open Oil in parent directory" }
+    )
     oil.setup({
       default_file_explorer = true,
       skip_confirm_for_simple_edits = true,
@@ -19,7 +24,8 @@ return {
         --        overridden
         --        See :help oil-config for a list of default keymaps
         ["<C-c>"] = false,
-        ["gq"] = "actions.close",
+        ["q"] = "actions.close",
+        ["gq"] = "q",
       },
     })
   end,
