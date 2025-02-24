@@ -18,6 +18,18 @@ return {
         show_hidden = true,
         is_always_hidden = function(name) return name == ".." end,
       },
+      win_options = {
+        number = true,
+        relativenumber = true,
+      },
+      preview_win = {
+        -- Only enable for directories
+        disable_preview = function() return true end,
+        win_options = {
+          number = false,
+          relativenumber = false,
+        },
+      },
       keymaps = {
         --  NOTE: <angle-bracket> notation IS case sensitive here
         --        Casing must match the default for the keymap to be
