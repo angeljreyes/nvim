@@ -49,8 +49,9 @@ return {
         win = {
           style = "input",
           keys = {
-            i_cc = { "<c-c>", { "cmp_close", "cancel" }, mode = "i" },
+            i_cc = { "<c-c>", "stopinsert", mode = "i" },
             i_esc = { "<esc>", "stopinsert", mode = "i" },
+            i_ctrl_w = {},
           },
         },
       },
@@ -74,7 +75,7 @@ return {
       },
 
       image = {
-        enabled = true
+        enabled = true,
       },
     })
   end,
