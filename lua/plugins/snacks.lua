@@ -1,3 +1,5 @@
+---@module "snacks"
+
 return {
   "folke/snacks.nvim",
   priority = 1001,
@@ -9,8 +11,6 @@ return {
   },
 
   config = function()
-    ---@module "snacks"
-
     vim.api.nvim_create_user_command("Q", function(cmd_opts) Snacks.bufdelete({ force = cmd_opts.bang }) end, {
       desc = "Delete the current buffer without closing the current window",
       bang = true,
@@ -71,6 +71,10 @@ return {
           -- Neogit Log View scrolling gets glitchy with this plugin enabled
           return not vim.endswith(vim.api.nvim_buf_get_name(buf), "NeogitLogView")
         end,
+      },
+
+      image = {
+        enabled = true
       },
     })
   end,
