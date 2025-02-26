@@ -20,7 +20,8 @@ return {
     { "<leader>sd", function() Snacks.picker.diagnostics_buffer() end, desc = "Search diagnostics in buffer" },
     { "<leader>sD", function() Snacks.picker.diagnostics() end, desc = "Search all diagnostics" },
     { "<leader>sh", function() Snacks.picker.help() end, desc = "Search help" },
-    { "<leader>sk", function() Snacks.picker.keymaps() end, desc = "Search help" },
+    { "<leader>sk", function() Snacks.picker.keymaps() end, desc = "Search keymaps" },
+    ---@diagnostic disable-next-line: undefined-field
     { "<leader>st", function() Snacks.picker.todo_comments() end, desc = "Search TODOs" },
     { "<leader>sg", function() Snacks.picker.grep() end, desc = "Grep" },
     { "<leader>s/", function() Snacks.picker.grep_buffers() end, desc = "Grep buffers" },
@@ -71,12 +72,10 @@ return {
           },
         },
         sources = {
+          undo = { focus = "list" },
           select = {
             layout = {
-              preset = "default",
-              layout = {
-                width = 0.5,
-              },
+              layout = { width = 0.5 },
             },
             win = {
               input = {
@@ -96,6 +95,7 @@ return {
             },
           },
           explorer = {
+            auto_close = true,
             layout = {
               ---@diagnostic disable-next-line: assign-type-mismatch
               preview = true,
