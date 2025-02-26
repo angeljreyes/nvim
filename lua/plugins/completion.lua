@@ -16,6 +16,7 @@ return {
         nerd_font_variant = "normal",
       },
       completion = {
+        accept = { auto_brackets = { enabled = false } },
         menu = {
           border = "single",
           draw = {
