@@ -14,7 +14,7 @@ return {
       },
     })
 
-    vim.keymap.set("n", "<leader>cf", function()
+    vim.keymap.set({ "n", "x" }, "<leader>cf", function()
       local clients = vim.lsp.get_clients({ bufnr = 0 })
       local is_null_ls_attached = vim.iter(clients):any(function(client) return client.name == "null-ls" end)
       if is_null_ls_attached then
