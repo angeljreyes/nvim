@@ -125,54 +125,32 @@ return {
         },
         extensions = {
           fzf = {},
-          ["ui-select"] = {
-            require("telescope.themes").get_dropdown(),
-          },
         },
       })
-      require("telescope").load_extension("ui-select")
       pcall(require("telescope").load_extension, "fzf")
       vim.api.nvim_create_user_command("LiveGrepGitRoot", live_grep_git_root, {})
 
       local tcbi = require("telescope.builtin")
-      vim.keymap.set("n", "<leader>?", tcbi.oldfiles, { desc = "Find recently opened files" })
-      vim.keymap.set("n", "<leader><space>", tcbi.buffers, { desc = "Find existing buffers" })
       vim.keymap.set(
         "n",
         "<leader>/",
         current_buffer_fuzzy,
         { desc = "Fuzzily search in current buffer" }
       )
-      vim.keymap.set("n", "<leader>s/", live_grep_open_files, { desc = "Search in Open Files" })
-      vim.keymap.set("n", "<leader>ss", tcbi.builtin, { desc = "Search Select telescope" })
-      vim.keymap.set("n", "<leader>sf", search_files, { desc = "Search Files" })
       vim.keymap.set("n", "<leader>si", search_ignored, { desc = "Search Ignored files" })
-      vim.keymap.set("n", "<leader>sh", tcbi.help_tags, { desc = "Search Help" })
-      vim.keymap.set("n", "<leader>sw", tcbi.grep_string, { desc = "Search current Word" })
-      vim.keymap.set("n", "<leader>sg", tcbi.live_grep, { desc = "Search by Grep" })
-      vim.keymap.set("n", "<leader>sq", tcbi.quickfix, { desc = "Search the quickfix list" })
       vim.keymap.set(
         "n",
         "<leader>sQ",
         tcbi.quickfixhistory,
         { desc = "Search the quickfix history" }
       )
-      vim.keymap.set("n", "<leader>sl", tcbi.loclist, { desc = "Search the location list history" })
       vim.keymap.set(
         "n",
         "<leader>sG",
         "<cmd>LiveGrepGitRoot<cr>",
         { desc = "Search by Live grep on git goot" }
       )
-      vim.keymap.set("n", "<leader>sd", tcbi.diagnostics, { desc = "Search Diagnostics" })
-      vim.keymap.set("n", "<leader>sr", tcbi.resume, { desc = "Search Resume" })
-      vim.keymap.set("n", "<leader>sk", tcbi.keymaps, { desc = "Search Keymaps" })
-      vim.keymap.set("n", "<leader>sc", tcbi.git_bcommits, { desc = "Git Commits on current buffer" })
     end,
-  },
-
-  {
-    "nvim-telescope/telescope-ui-select.nvim",
   },
 
   {

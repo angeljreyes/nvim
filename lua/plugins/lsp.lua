@@ -4,6 +4,8 @@
 ---@field filetypes? string[]
 ---@field init_options? table
 
+---@module "snacks"
+
 local on_lsp_attach = function(client, bufnr)
   local map = function(mode, keys, func, desc)
     if desc then
@@ -13,18 +15,16 @@ local on_lsp_attach = function(client, bufnr)
     vim.keymap.set(mode, keys, func, { buffer = bufnr, desc = desc })
   end
 
-  local builtin = require("telescope.builtin")
-
   map("n", "<leader>cr", vim.lsp.buf.rename, "Code Rename")
   map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code Action")
   map("i", "<c-.>", vim.lsp.buf.code_action, "Code Action")
 
-  map("n", "gd", builtin.lsp_definitions, "Go to Definition")
-  map("n", "gr", builtin.lsp_references, "Go to References")
-  map("n", "gI", builtin.lsp_implementations, "Go to Implementation")
-  map("n", "<leader>D", builtin.lsp_type_definitions, "type Definition")
-  map("n", "<leader>cs", builtin.lsp_document_symbols, "Document Symbols")
-  map("n", "<leader>ws", builtin.lsp_dynamic_workspace_symbols, "Workspace Symbols")
+  map("n", "gd", Snacks.picker.lsp_definitions, "Go to Definition")
+  map("n", "gr", Snacks.picker.lsp_references, "Go to References")
+  map("n", "gI", Snacks.picker.lsp_implementations, "Go to Implementation")
+  map("n", "<leader>sT", Snacks.picker.lsp_type_definitions, "Search type definitions")
+  map("n", "<leader>sS", Snacks.picker.lsp_symbols, "Search document symbols")
+  map("n", "<leader>sW", Snacks.picker.lsp_workspace_symbols, "Search workspace symbols")
 
   -- See `:help K` for why this keymap
   map("n", "K", vim.lsp.buf.hover, "Hover Documentation")
@@ -51,7 +51,7 @@ local on_lsp_attach = function(client, bufnr)
 end
 
 return {
-  { "j-hui/fidget.nvim", config = true },
+  { "j-hui/fidget.nvim",    config = true },
 
   {
     "williamboman/mason.nvim",
