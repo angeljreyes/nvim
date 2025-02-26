@@ -203,5 +203,14 @@ return {
     end,
   },
 
+  {
+    "stefanboca/venv-selector.nvim",
+    branch = "sb/push-rlpxsqmllxtz",
+    dependencies = {
+      "neovim/nvim-lspconfig",
+    },
+    opts = {},
+  },
+
   { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
 }

@@ -63,14 +63,6 @@ local function search_ignored()
   })
 end
 
-local function check_venv()
-  local venv = vim.fn.finddir("venv", vim.fn.getcwd())
-  local dotvenv = vim.fn.finddir(".venv", vim.fn.getcwd())
-  if venv ~= "" or dotvenv ~= "" then
-    require("venv-selector").retrieve_from_cache()
-  end
-end
-
 return {
   {
     "nvim-telescope/telescope.nvim",
@@ -150,30 +142,6 @@ return {
         "<cmd>LiveGrepGitRoot<cr>",
         { desc = "Search by Live grep on git goot" }
       )
-    end,
-  },
-
-  {
-    "linux-cultist/venv-selector.nvim",
-    dependencies = {
-      "neovim/nvim-lspconfig",
-      "nvim-telescope/telescope.nvim",
-      "mfussenegger/nvim-dap-python",
-    },
-    event = "VeryLazy",
-    config = function()
-      vim.api.nvim_create_autocmd("VimEnter", {
-        desc = "Auto select venv Nvim open",
-        callback = check_venv,
-        once = true,
-      })
-
-      require("venv-selector").setup({
-        stay_on_this_version = true,
-        name = { "venv", ".venv" },
-        parents = 0,
-        -- auto_refresh = false
-      })
     end,
   },
 }
