@@ -14,7 +14,15 @@ return {
       },
     })
 
-    vim.keymap.set("n", "<leader>cf", vim.lsp.buf.format, { desc = "Format current buffer" })
+    vim.keymap.set("n", "<leader>cf", function()
+      local clients = vim.lsp.get_clients({ bufnr = 0 })
+      local is_null_ls_attached = vim.iter(clients):any(function(client) return client.name == "null-ls" end)
+      if is_null_ls_attached then
+        vim.lsp.buf.format({ name = "null-ls" })
+      else
+        vim.lsp.buf.format()
+      end
+    end, { desc = "Format current buffer" })
 
     vim.diagnostic.config({ signs = false })
   end,
