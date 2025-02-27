@@ -13,8 +13,8 @@ return {
       },
     })
 
-    --- @param index integer index to select a list item
-    --- @return function
+    ---@param index integer index to select a list item
+    ---@return function
     local function sel(index)
       return function() harpoon:list():select(index) end
     end

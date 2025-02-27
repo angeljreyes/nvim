@@ -1,4 +1,4 @@
-local function indentation()
+local function get_indentation_style()
   if vim.bo.expandtab then
     return vim.bo.shiftwidth .. " spaces"
   else
@@ -6,25 +6,25 @@ local function indentation()
   end
 end
 
-local function line_amount()
-  return tostring(vim.fn.line("$")) .. "L"
-end
+local function get_line_amount() return tostring(vim.fn.line("$")) .. "L" end
 
 return {
-  { "nvim-tree/nvim-web-devicons" },
+  "nvim-tree/nvim-web-devicons",
 
   {
     "uga-rosa/ccc.nvim",
+    lazy = false,
+    keys = {
+      { "<leader>cc", "<cmd>CccPick<cr>", desc = "Pick a color" },
+      { "<leader>cC", "<cmd>CccConvert<cr>", desc = "Convert color format" },
+    },
     config = function()
-      vim.keymap.set("n", "<leader>cc", "<cmd>CccPick<cr>", { desc = "Pick a color" })
-      vim.keymap.set("n", "<leader>cC", "<cmd>CccConvert<cr>", { desc = "Convert color format" })
-
       local ccc = require("ccc")
       local m = ccc.mapping
 
       ccc.setup({
         highlighter = {
-          auto_enable = true
+          auto_enable = true,
         },
         mappings = {
           n = m.goto_next,
@@ -38,25 +38,24 @@ return {
           ["$"] = m.set100,
           ["_"] = m.set0,
           ["0"] = m.set0,
-        }
-      })
-    end
-  },
-
-  {
-    "mcauley-penney/visual-whitespace.nvim",
-    config = function()
-      local bg = vim.api.nvim_get_hl(0, { name = "Visual" }).bg
-      local fg = vim.api.nvim_get_hl(0, { name = "NonText" }).fg
-      require("visual-whitespace").setup({
-        highlight = { bg = bg, fg = fg }
+        },
       })
     end,
   },
 
   {
+    "mcauley-penney/visual-whitespace.nvim",
+    opts = {
+      highlight = {
+        bg = vim.api.nvim_get_hl(0, { name = "Visual" }).bg,
+        fg = vim.api.nvim_get_hl(0, { name = "NonText" }).fg,
+      },
+    },
+  },
+
+  {
     "folke/todo-comments.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
+    dependencies = "nvim-lua/plenary.nvim",
     config = function()
       local tc = require("todo-comments")
       tc.setup({
@@ -92,7 +91,7 @@ return {
         },
         lualine_x = {
           "encoding",
-          indentation,
+          get_indentation_style,
           {
             "fileformat",
             symbols = {
@@ -104,7 +103,7 @@ return {
           "filetype",
         },
         lualine_y = {
-          line_amount,
+          get_line_amount,
           "progress",
         },
         lualine_z = {

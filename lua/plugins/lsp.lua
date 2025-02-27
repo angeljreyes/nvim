@@ -51,7 +51,10 @@ local on_lsp_attach = function(client, bufnr)
 end
 
 return {
-  { "j-hui/fidget.nvim", config = true },
+  {
+    "j-hui/fidget.nvim",
+    opts = {},
+  },
 
   {
     "williamboman/mason.nvim",
@@ -198,8 +201,6 @@ return {
           vim.lsp.buf.format()
         end
       end, { desc = "Format current buffer" })
-
-      vim.diagnostic.config({ signs = false })
     end,
   },
 
@@ -212,5 +213,8 @@ return {
     opts = {},
   },
 
-  { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
+  {
+    "Bilal2453/luvit-meta",
+    lazy = true,
+  },
 }

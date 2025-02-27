@@ -1,17 +1,16 @@
 return {
   {
     "mfussenegger/nvim-dap",
-    config = function()
-      local dap = require("dap")
-      -- TODO: Add descriptions
-      vim.keymap.set("n", "<Leader>db", dap.toggle_breakpoint, { desc = "Toggle Breakpoint" })
-      vim.keymap.set("n", "<leader>dc", dap.continue, { desc = "Continue" })
-      vim.keymap.set("n", "<leader>dn", dap.step_over, { desc = "Step Over" })
-      vim.keymap.set("n", "<leader>di", dap.step_into, { desc = "Step Into" })
-      vim.keymap.set("n", "<leader>do", dap.step_out, { desc = "Step Out" })
-      vim.keymap.set("n", "<leader>ds", dap.close, { desc = "Stop" })
-    end,
+    keys = {
+      { "<Leader>db", "<cmd>DapToggleBreakpoint<cr>", desc = "Toggle Breakpoint" },
+      { "<leader>dc", "<cmd>DapContinue<cr>", desc = "Continue" },
+      { "<leader>dn", "<cmd>DapStepOver<cr>", desc = "Step Over" },
+      { "<leader>di", "<cmd>DapStepInto<cr>", desc = "Step Into" },
+      { "<leader>do", "<cmd>DapStepOut<cr>", desc = "Step Out" },
+      { "<leader>ds", "<cmd>DapTerminate<cr>", desc = "Stop" },
+    },
   },
+
   {
     "rcarriga/nvim-dap-ui",
     dependencies = {
@@ -28,6 +27,7 @@ return {
       dap.listeners.before.event_exited.dapui_config = dapui.close
     end,
   },
+
   {
     "jay-babu/mason-nvim-dap.nvim",
     dependencies = {

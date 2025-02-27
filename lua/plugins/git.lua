@@ -1,41 +1,35 @@
 return {
+  "sindrets/diffview.nvim",
+
   {
     "NeogitOrg/neogit",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "sindrets/diffview.nvim",
+    dependencies = "nvim-lua/plenary.nvim",
+    keys = {
+      { "<leader>g", "<cmd>wa<cr><cmd>Neogit<cr>", desc = "Git" },
     },
-    config = function()
-      local neogit = require("neogit")
 
-      vim.keymap.set("n", "<leader>g", function()
-        vim.cmd(":wa")
-        neogit.open()
-      end, { desc = "Git" })
-
-      neogit.setup({
+    opts = {
+      kind = "floating",
+      graph_style = "unicode",
+      signs = {
+        hunk = { "", "" },
+        item = { "", "" },
+        section = { "", "" },
+      },
+      commit_editor = {
+        kind = "tab",
+        spell_check = false,
+      },
+      log_view = {
         kind = "floating",
-        graph_style = "unicode",
-        signs = {
-          hunk = { "", "" },
-          item = { "", "" },
-          section = { "", "" },
-        },
+      },
+      mappings = {
         commit_editor = {
-          kind = "tab",
-          spell_check = false,
+          ["<c-c><c-c>"] = false,
+          ["<c-c><c-k>"] = false,
         },
-        log_view = {
-          kind = "floating",
-        },
-        mappings = {
-          commit_editor = {
-            ["<c-c><c-c>"] = false,
-            ["<c-c><c-k>"] = false,
-          },
-        },
-      })
-    end,
+      },
+    },
   },
 
   {

@@ -1,7 +1,7 @@
 return {
-  { "tpope/vim-sleuth" },
+  "tpope/vim-sleuth",
 
-  { "hiphish/rainbow-delimiters.nvim" },
+  "hiphish/rainbow-delimiters.nvim",
 
   {
     "cohama/lexima.vim",
@@ -27,7 +27,10 @@ return {
     end,
   },
 
-  { "numToStr/Comment.nvim", opts = {} },
+  {
+    "numToStr/Comment.nvim",
+    opts = {},
+  },
 
   {
     "lukas-reineke/indent-blankline.nvim",
@@ -51,6 +54,6 @@ return {
   {
     "kylechui/nvim-surround",
     event = "VeryLazy",
-    config = true,
+    opts = {},
   },
 }

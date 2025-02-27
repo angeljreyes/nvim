@@ -1,9 +1,9 @@
 return {
-  { "tweekmonster/helpful.vim" },
+  "tweekmonster/helpful.vim",
 
   {
     "echasnovski/mini.test",
-    config = true,
+    opts = {},
     enabled = Utils.is_profile("home"),
   },
 }
