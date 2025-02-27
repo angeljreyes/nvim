@@ -85,6 +85,8 @@ return {
         },
 
         explorer = {
+          hidden = true,
+          ignored = true,
           auto_close = true,
           layout = {
             ---@diagnostic disable-next-line: assign-type-mismatch
