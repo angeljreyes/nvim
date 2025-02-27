@@ -20,6 +20,9 @@ return {
       enabled = true,
       win = {
         style = "input",
+        on_buf = function()
+          vim.schedule(function() vim.cmd("stopinsert") end)
+        end,
         keys = {
           i_cc = { "<c-c>", "stopinsert", mode = "i" },
           i_esc = { "<esc>", "stopinsert", mode = "i" },
