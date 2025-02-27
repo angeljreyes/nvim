@@ -4,6 +4,7 @@ return {
   {
     "NeogitOrg/neogit",
     dependencies = "nvim-lua/plenary.nvim",
+    cmd = "Neogit",
     keys = {
       { "<leader>g", "<cmd>wa<cr><cmd>Neogit<cr>", desc = "Git" },
     },
