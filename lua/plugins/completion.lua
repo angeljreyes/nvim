@@ -46,6 +46,16 @@ return {
           ["<c-n>"] = { function(cmp) cmp.select_next({ auto_insert = false }) end, "fallback" },
         },
       },
+      sources = {
+        default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+        providers = {
+          lazydev = {
+            name = "LazyDev",
+            module = "lazydev.integrations.blink",
+            score_offset = 100,
+          },
+        },
+      },
     },
   },
 }
