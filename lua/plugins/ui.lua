@@ -45,12 +45,14 @@ return {
 
   {
     "mcauley-penney/visual-whitespace.nvim",
-    opts = {
-      highlight = {
-        bg = vim.api.nvim_get_hl(0, { name = "Visual" }).bg,
-        fg = vim.api.nvim_get_hl(0, { name = "NonText" }).fg,
-      },
-    },
+    opts = function()
+      return {
+        highlight = {
+          bg = vim.api.nvim_get_hl(0, { name = "Visual" }).bg,
+          fg = vim.api.nvim_get_hl(0, { name = "NonText" }).fg,
+        },
+      }
+    end,
   },
 
   {
