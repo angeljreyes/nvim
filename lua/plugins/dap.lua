@@ -35,26 +35,28 @@ return {
       "mfussenegger/nvim-dap",
       "williamboman/mason.nvim",
     },
-    opts = {
-      handlers = {
-        function(config)
-          -- all sources with no handler get passed here
-          -- Keep original functionality
-          require("mason-nvim-dap").default_setup(config)
-        end,
-        python = function(config)
-          local cmd = Utils.on_windows and "py" or "python3"
-          config.adapters = {
-            type = "executable",
-            command = cmd,
-            args = {
-              "-m",
-              "debugpy.adapter",
-            },
-          }
-          require("mason-nvim-dap").default_setup(config)
-        end,
-      },
-    },
+    opts = function()
+      return {
+        handlers = {
+          function(config)
+            -- all sources with no handler get passed here
+            -- Keep original functionality
+            require("mason-nvim-dap").default_setup(config)
+          end,
+          python = function(config)
+            local cmd = Utils.on_windows and "py" or "python3"
+            config.adapters = {
+              type = "executable",
+              command = cmd,
+              args = {
+                "-m",
+                "debugpy.adapter",
+              },
+            }
+            require("mason-nvim-dap").default_setup(config)
+          end,
+        },
+      }
+    end
   },
 }
