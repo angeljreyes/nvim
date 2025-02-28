@@ -24,6 +24,8 @@ return {
         },
         documentation = {
           window = { border = "single" },
+          auto_show = true,
+          auto_show_delay_ms = 300,
         },
       },
       signature = {
