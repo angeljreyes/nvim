@@ -39,6 +39,8 @@
   "plenary.nvim": { "branch": "master", "commit": "857c5ac632080dba10aae49dba902ce3abf91b35" },
   "presence.nvim": { "branch": "main", "commit": "87c857a56b7703f976d3a5ef15967d80508df6e6" },
   "rainbow-delimiters.nvim": { "branch": "master", "commit": "011d98eaa3a73b5a51d82ce5bc6b1397dde95562" },
+  "roslyn.nvim": { "branch": "main", "commit": "633a61c30801a854cf52f4492ec8702a8c4ec0e9" },
+  "rzls.nvim": { "branch": "main", "commit": "93130e44cbc16c592081716d59905353c6a9ad10" },
   "snacks.nvim": { "branch": "main", "commit": "1239fb84bc426d4fcd1c8dc9dde8503c17501842" },
   "todo-comments.nvim": { "branch": "main", "commit": "304a8d204ee787d2544d8bc23cd38d2f929e7cc5" },
   "treesj": { "branch": "main", "commit": "48c1a7539f376fd40ceb9cf12d697040fcf90649" },

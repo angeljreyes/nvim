@@ -82,14 +82,6 @@ return {
       ---@type { [string]: NvimConfig.LanguageServer }
       local servers = {
         rust_analyzer = { enabled = Utils.is_profile("home") },
-        omnisharp = {
-          filetypes = { "csx", "cs" },
-          settings = {
-            RoslynExtensionsOptions = {
-              EnableImportCompletion = true,
-            },
-          },
-        },
         ts_ls = {},
         html = {},
         angularls = {
@@ -162,6 +154,61 @@ return {
         border = "rounded",
       })
     end,
+  },
+
+  {
+    "seblyng/roslyn.nvim",
+    ft = { "cs", "razor" },
+    dependencies = {
+      "tris203/rzls.nvim",
+      "saghen/blink.cmp",
+    },
+    opts = function()
+      return {
+        args = {
+          "--stdio",
+          "--logLevel=Information",
+          "--extensionLogDirectory=" .. vim.fs.dirname(vim.lsp.get_log_path()),
+          "--razorSourceGenerator=" .. vim.fs.joinpath(
+            vim.fn.stdpath("data") --[[@as string]],
+            "mason",
+            "packages",
+            "roslyn",
+            "libexec",
+            "Microsoft.CodeAnalysis.Razor.Compiler.dll"
+          ),
+          "--razorDesignTimePath=" .. vim.fs.joinpath(
+            vim.fn.stdpath("data") --[[@as string]],
+            "mason",
+            "packages",
+            "rzls",
+            "libexec",
+            "Targets",
+            "Microsoft.NET.Sdk.Razor.DesignTime.targets"
+          ),
+        },
+        ---@diagnostic disable-next-line: missing-fields
+        config = {
+          handlers = require("rzls.roslyn_handlers"),
+          capabilities = require("blink.cmp").get_lsp_capabilities(),
+          on_attach = on_lsp_attach,
+          settings = {},
+        },
+      }
+    end,
+  },
+
+  {
+    "tris203/rzls.nvim",
+    ft = { "cs", "razor" },
+    opts = function()
+      ---@type rzls.Config
+      return {
+        on_attach = on_lsp_attach,
+        capabilities = require("blink.cmp").get_lsp_capabilities(),
+      }
+    end,
+    dependencies = "saghen/blink.cmp",
   },
 
   {
