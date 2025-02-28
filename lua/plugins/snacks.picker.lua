@@ -58,6 +58,11 @@ return {
         },
       },
 
+      ---@diagnostic disable-next-line: missing-fields
+      icons = {
+        diagnostics = { Hint = "󰌵 " },
+      },
+
       sources = {
         undo = { focus = "list" },
 
