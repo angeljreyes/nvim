@@ -44,8 +44,17 @@ return {
       cmdline = {
         keymap = {
           ["<c-y>"] = { "accept", "fallback" },
-          ["<c-p>"] = { function(cmp) cmp.select_prev({ auto_insert = false }) end, "fallback" },
-          ["<c-n>"] = { function(cmp) cmp.select_next({ auto_insert = false }) end, "fallback" },
+          ["<c-p>"] = {
+            function(cmp) return cmp.select_prev({ auto_insert = false }) end,
+            "fallback",
+          },
+          ["<c-n>"] = {
+            function(cmp) return cmp.select_next({ auto_insert = false }) end,
+            "fallback",
+          },
+        },
+        completion = {
+          menu = { auto_show = true },
         },
       },
       sources = {
