@@ -1,7 +1,10 @@
+---@module "which-key"
+
 return {
   "folke/which-key.nvim",
-  config = function()
-    require("which-key").add({
+  opts = {
+    ---@type wk.Spec
+    spec = {
       { "<leader>a", group = "Harpoon" },
       { "<leader>c", group = "Code" },
       { "<leader>d", group = "Debugger" },
@@ -10,6 +13,6 @@ return {
       { "<leader>w", group = "Workspace" },
       { "<leader>", group = "VISUAL <leader>", mode = "v" },
       { "<leader>h", group = "git Hunk", mode = "v" },
-    })
-  end,
+    },
+  },
 }

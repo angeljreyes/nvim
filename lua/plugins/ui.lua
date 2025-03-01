@@ -18,11 +18,10 @@ return {
       { "<leader>cc", "<cmd>CccPick<cr>", desc = "Pick a color" },
       { "<leader>cC", "<cmd>CccConvert<cr>", desc = "Convert color format" },
     },
-    config = function()
-      local ccc = require("ccc")
-      local m = ccc.mapping
+    opts = function()
+      local m = require("ccc").mapping
 
-      ccc.setup({
+      return {
         highlighter = {
           auto_enable = true,
         },
@@ -39,7 +38,7 @@ return {
           ["_"] = m.set0,
           ["0"] = m.set0,
         },
-      })
+      }
     end,
   },
 
@@ -58,14 +57,14 @@ return {
   {
     "folke/todo-comments.nvim",
     dependencies = "nvim-lua/plenary.nvim",
-    config = function()
+    keys = function()
       local tc = require("todo-comments")
-      tc.setup({
-        signs = false,
-      })
-      vim.keymap.set("n", "]t", function() tc.jump_next() end, { desc = "Next todo comment" })
-      vim.keymap.set("n", "[t", function() tc.jump_prev() end, { desc = "Previous todo comment" })
+      return {
+        { "]t", function() tc.jump_next() end, desc = "Next todo comment" },
+        { "[t", function() tc.jump_prev() end, desc = "Previous todo comment" },
+      }
     end,
+    opts = { signs = false },
   },
 
   {
@@ -88,8 +87,8 @@ return {
               warn = " ",
               info = " ",
               hint = "󰌵 ",
-            }
-          }
+            },
+          },
         },
         lualine_c = {
           {
