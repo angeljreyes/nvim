@@ -15,6 +15,9 @@ return {
     config = function()
       require("catppuccin").setup({
         transparent_background = transparency,
+        custom_highlights = function(colors)
+          return { GitSignsChange = { fg = colors.peach } }
+        end,
         integrations = {
           blink_cmp = true,
           diffview = true,
