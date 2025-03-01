@@ -13,7 +13,20 @@ return {
     priority = 1000,
     name = "catppuccin",
     config = function()
-      require("catppuccin").setup({ transparent_background = transparency })
+      require("catppuccin").setup({
+        transparent_background = transparency,
+        integrations = {
+          blink_cmp = true,
+          diffview = true,
+          fidget = true,
+          harpoon = true,
+          mason = true,
+          snacks = {
+            enabled = true,
+          },
+          which_key = true,
+        },
+      })
       vim.cmd.colorscheme("catppuccin")
     end,
   },
