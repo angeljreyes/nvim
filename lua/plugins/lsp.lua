@@ -6,7 +6,7 @@
 
 ---@module "snacks"
 
-local on_lsp_attach = function(client, bufnr)
+local on_lsp_attach = function(_, bufnr)
   local map = function(mode, keys, func, desc)
     if desc then
       desc = "LSP: " .. desc
@@ -32,22 +32,6 @@ local on_lsp_attach = function(client, bufnr)
 
   -- Lesser used LSP functionality
   map("n", "gD", vim.lsp.buf.declaration, "Go to declaration")
-  map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, "Workspace add folder")
-  map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, "Workspace remove folder")
-  map(
-    "n",
-    "<leader>wl",
-    function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
-    "Workspace list folders"
-  )
-
-  -- Create a command `:Format` local to the LSP buffer
-  vim.api.nvim_buf_create_user_command(
-    bufnr,
-    "Format",
-    function(_) vim.lsp.buf.format() end,
-    { desc = "Format current buffer with LSP" }
-  )
 end
 
 return {

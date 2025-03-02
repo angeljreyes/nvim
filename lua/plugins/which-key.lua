@@ -10,7 +10,6 @@ return {
       { "<leader>d", group = "Debugger" },
       { "<leader>h", group = "Git Hunk" },
       { "<leader>s", group = "Search" },
-      { "<leader>w", group = "Workspace" },
       { "<leader>", group = "VISUAL <leader>", mode = "v" },
       { "<leader>h", group = "git Hunk", mode = "v" },
     },
