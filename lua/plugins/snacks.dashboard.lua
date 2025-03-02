@@ -15,7 +15,7 @@ return {
       },
       preset = {
         keys = {
-          { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+          { icon = " ", key = "n", desc = "New file", action = ":ene | startinsert" },
           {
             icon = " ",
             key = "c",

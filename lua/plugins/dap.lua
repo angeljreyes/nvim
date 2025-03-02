@@ -2,12 +2,12 @@ return {
   {
     "mfussenegger/nvim-dap",
     keys = {
-      { "<Leader>db", "<cmd>DapToggleBreakpoint<cr>", desc = "Toggle Breakpoint" },
-      { "<Leader>dB", "<cmd>DapClearBreakpoints<cr>", desc = "Toggle Breakpoint" },
+      { "<Leader>db", "<cmd>DapToggleBreakpoint<cr>", desc = "Toggle breakpoint" },
+      { "<Leader>dB", "<cmd>DapClearBreakpoints<cr>", desc = "Clear breakpoints" },
       { "<leader>dc", "<cmd>DapContinue<cr>", desc = "Continue" },
-      { "<leader>dn", "<cmd>DapStepOver<cr>", desc = "Step Over" },
-      { "<leader>di", "<cmd>DapStepInto<cr>", desc = "Step Into" },
-      { "<leader>do", "<cmd>DapStepOut<cr>", desc = "Step Out" },
+      { "<leader>dn", "<cmd>DapStepOver<cr>", desc = "Step over" },
+      { "<leader>di", "<cmd>DapStepInto<cr>", desc = "Step into" },
+      { "<leader>do", "<cmd>DapStepOut<cr>", desc = "Step out" },
       { "<leader>ds", "<cmd>DapTerminate<cr>", desc = "Stop" },
     },
   },

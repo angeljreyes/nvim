@@ -6,8 +6,8 @@ return {
   lazy = false,
 
   keys = {
-    { "<leader>nd", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
-    { "<leader>nh", function() Snacks.notifier.show_history() end, desc = "Notification History" },
+    { "<leader>nd", function() Snacks.notifier.hide() end, desc = "Dismiss all notifications" },
+    { "<leader>nh", function() Snacks.notifier.show_history() end, desc = "Notification history" },
   },
 
   ---@type snacks.Config

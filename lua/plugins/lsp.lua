@@ -15,30 +15,30 @@ local on_lsp_attach = function(client, bufnr)
     vim.keymap.set(mode, keys, func, { buffer = bufnr, desc = desc })
   end
 
-  map("n", "<leader>cr", vim.lsp.buf.rename, "Code Rename")
-  map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code Action")
-  map("i", "<c-.>", vim.lsp.buf.code_action, "Code Action")
+  map("n", "<leader>cr", vim.lsp.buf.rename, "Code rename")
+  map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code action")
+  map("i", "<c-.>", vim.lsp.buf.code_action, "Code action")
 
-  map("n", "gd", Snacks.picker.lsp_definitions, "Go to Definition")
-  map("n", "gr", Snacks.picker.lsp_references, "Go to References")
-  map("n", "gI", Snacks.picker.lsp_implementations, "Go to Implementation")
+  map("n", "gd", Snacks.picker.lsp_definitions, "Go to definition")
+  map("n", "gr", Snacks.picker.lsp_references, "Go to references")
+  map("n", "gI", Snacks.picker.lsp_implementations, "Go to implementation")
   map("n", "<leader>sT", Snacks.picker.lsp_type_definitions, "Search type definitions")
   map("n", "<leader>sS", Snacks.picker.lsp_symbols, "Search document symbols")
   map("n", "<leader>sW", Snacks.picker.lsp_workspace_symbols, "Search workspace symbols")
 
   -- See `:help K` for why this keymap
-  map("n", "K", vim.lsp.buf.hover, "Hover Documentation")
-  map("n", "<c-k>", vim.lsp.buf.signature_help, "Signature Documentation")
+  map("n", "K", vim.lsp.buf.hover, "Hover documentation")
+  map("n", "<c-k>", vim.lsp.buf.signature_help, "Signature documentation")
 
   -- Lesser used LSP functionality
-  map("n", "gD", vim.lsp.buf.declaration, "Go to Declaration")
-  map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, "Workspace Add Folder")
-  map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, "Workspace Remove Folder")
+  map("n", "gD", vim.lsp.buf.declaration, "Go to declaration")
+  map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, "Workspace add folder")
+  map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, "Workspace remove folder")
   map(
     "n",
     "<leader>wl",
     function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
-    "Workspace List Folders"
+    "Workspace list folders"
   )
 
   -- Create a command `:Format` local to the LSP buffer
