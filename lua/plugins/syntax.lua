@@ -50,6 +50,12 @@ return {
   },
 
   {
+    "kevinhwang91/nvim-fundo",
+    opts = {},
+    dependencies = "kevinhwang91/promise-async",
+  },
+
+  {
     "windwp/nvim-ts-autotag",
     opts = {
       aliases = { razor = "html" },
