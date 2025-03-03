@@ -58,12 +58,19 @@ return {
         },
       },
       sources = {
-        default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+        default = { "lazydev", "lsp", "easy-dotnet", "path", "snippets", "buffer" },
         providers = {
           lazydev = {
             name = "LazyDev",
             module = "lazydev.integrations.blink",
             score_offset = 100,
+          },
+          ["easy-dotnet"] = {
+            name = "easy-dotnet",
+            enabled = true,
+            module = "easy-dotnet.completion.blink",
+            score_offset = 10000,
+            async = true,
           },
         },
       },
