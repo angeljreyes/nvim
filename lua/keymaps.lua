@@ -9,7 +9,7 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
 
 -- Visual block mode fix
-vim.keymap.set("i", "<C-c>", "<esc>")
+vim.keymap.set({ "x", "i" }, "<C-c>", "<esc>")
 
 -- Disable "Type  :qa  and press <Enter> to exit Nvim" text
 vim.cmd([[nnoremap <C-c> <silent> <C-c>]])
