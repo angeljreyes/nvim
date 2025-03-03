@@ -4,10 +4,6 @@ vim.keymap.set("v", "<leader>P", '"_dP', { desc = "Put keep reg" })
 vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "Copy to clipboard" })
 vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', { desc = "Paste from clipboard" })
 
--- Move code :)
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
-
 -- Visual block mode fix
 vim.keymap.set({ "x", "i" }, "<C-c>", "<esc>")
 

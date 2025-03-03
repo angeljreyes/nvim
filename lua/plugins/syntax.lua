@@ -28,6 +28,11 @@ return {
   },
 
   {
+    "echasnovski/mini.move",
+    opts = {},
+  },
+
+  {
     "numToStr/Comment.nvim",
     opts = {},
   },
