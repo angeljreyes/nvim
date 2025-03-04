@@ -12,6 +12,7 @@ vim.o.mouse = "a"
 vim.o.cursorline = true
 
 vim.o.scrolloff = 8
+vim.o.sidescrolloff = 10
 
 vim.o.breakindent = true
 vim.o.shiftwidth = 4
