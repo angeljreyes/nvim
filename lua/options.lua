@@ -20,6 +20,7 @@ vim.o.tabstop = 4
 vim.o.expandtab = true
 
 vim.o.undofile = true
+vim.o.undolevels = 10000
 
 vim.o.ignorecase = true
 vim.o.smartcase = true
