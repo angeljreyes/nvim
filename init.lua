@@ -17,7 +17,7 @@ if not vim.uv.fs_stat(lazypath) then
     lazypath,
   })
 end
-vim.opt.rtp:prepend(lazypath)
+vim.o.rtp = lazypath .. "," .. vim.o.rtp
 
 require("lazy").setup("plugins", {
   change_detection = { notify = false },

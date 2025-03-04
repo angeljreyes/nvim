@@ -1,50 +1,50 @@
 vim.g.omni_sql_no_default_maps = true
 
-vim.opt.hlsearch = false
+vim.o.hlsearch = false
 
-vim.opt.number = true
-vim.opt.relativenumber = true
+vim.o.number = true
+vim.o.relativenumber = true
 
-vim.opt.wrap = true
+vim.o.wrap = true
 
-vim.opt.mouse = "a"
+vim.o.mouse = "a"
 
-vim.opt.cursorline = true
+vim.o.cursorline = true
 
-vim.opt.scrolloff = 8
+vim.o.scrolloff = 8
 
-vim.opt.breakindent = true
-vim.opt.shiftwidth = 4
-vim.opt.tabstop = 4
-vim.opt.expandtab = true
+vim.o.breakindent = true
+vim.o.shiftwidth = 4
+vim.o.tabstop = 4
+vim.o.expandtab = true
 
-vim.opt.undofile = true
+vim.o.undofile = true
 
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
+vim.o.ignorecase = true
+vim.o.smartcase = true
 
-vim.opt.signcolumn = "yes"
+vim.o.signcolumn = "yes"
 
-vim.opt.updatetime = 250
-vim.opt.timeoutlen = 300
+vim.o.updatetime = 250
+vim.o.timeoutlen = 300
 
-vim.opt.completeopt = "menuone,noselect"
+vim.o.completeopt = "menuone,noselect"
 
-vim.opt.termguicolors = true
+vim.o.termguicolors = true
 
-vim.opt.showmode = false
+vim.o.showmode = false
 
-vim.opt.title = true
-vim.opt.titlelen = 0
-vim.opt.titlestring = [[nvim – %{fnamemodify(getcwd(), ':t')}/%t]]
+vim.o.title = true
+vim.o.titlelen = 0
+vim.o.titlestring = [[nvim – %{fnamemodify(getcwd(), ':t')}/%t]]
 
-vim.opt.splitright = true
-vim.opt.splitbelow = true
+vim.o.splitright = true
+vim.o.splitbelow = true
 
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-vim.opt.foldlevel = 99
-vim.opt.foldtext = ""
+vim.o.foldmethod = "expr"
+vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.o.foldlevel = 99
+vim.o.foldtext = ""
 
 vim.cmd[[
   aunmenu PopUp.How-to\ disable\ mouse
