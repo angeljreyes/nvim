@@ -17,6 +17,7 @@ return {
     ---@diagnostic disable-next-line: undefined-field
     { "<leader>st", function() Snacks.picker.todo_comments() end, desc = "Search TODOs" },
     { "<leader>sg", function() Snacks.picker.grep() end, desc = "Grep" },
+    { "<leader>/", function() Snacks.picker.lines() end, desc = "Search lines in buffer" },
     { "<leader>s/", function() Snacks.picker.grep_buffers() end, desc = "Grep buffers" },
     { "<leader>sw", function() Snacks.picker.grep_word() end, desc = "Grep current word" },
     { "<leader>sq", function() Snacks.picker.qflist() end, desc = "Search quickfix list" },
@@ -85,6 +86,18 @@ return {
               keys = {
                 ["<cr>"] = { "edit_vsplit", mode = { "i", "n" } },
               },
+            },
+          },
+        },
+
+        lines = {
+          layout = {
+            preset = "vertical",
+            fullscreen = true,
+            ---@diagnostic disable-next-line: assign-type-mismatch
+            preview = true,
+            layout = {
+              border = "top",
             },
           },
         },
