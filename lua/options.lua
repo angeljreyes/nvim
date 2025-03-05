@@ -48,6 +48,8 @@ vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.o.foldlevel = 99
 vim.o.foldtext = ""
 
+vim.o.laststatus = 3
+
 vim.cmd[[
   aunmenu PopUp.How-to\ disable\ mouse
   aunmenu PopUp.-1-
