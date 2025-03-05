@@ -16,7 +16,10 @@ return {
       require("catppuccin").setup({
         transparent_background = transparency,
         custom_highlights = function(colors)
-          return { GitSignsChange = { fg = colors.peach } }
+          return {
+            GitSignsChange = { fg = colors.peach },
+            WinSeparator = { fg = colors.overlay0 },
+          }
         end,
         integrations = {
           blink_cmp = true,
