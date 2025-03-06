@@ -38,18 +38,6 @@ return {
   },
 
   {
-    "lukas-reineke/indent-blankline.nvim",
-    main = "ibl",
-    opts = {
-      exclude = {
-        filetypes = {
-          "markdown",
-        },
-      },
-    },
-  },
-
-  {
     "kevinhwang91/nvim-fundo",
     opts = {},
     dependencies = "kevinhwang91/promise-async",

@@ -16,6 +16,21 @@ return {
     bufdelete = { enabled = true },
     notifier = { enabled = true },
     image = { enabled = true },
+
+    indent = {
+      enabled = true,
+      indent = { char = "▏" },
+      scope = { char = "▏" },
+      animate = {
+        easing = "inCubic",
+        duration = { step = 10, total = 250 },
+      },
+      filter = function(buf)
+        local default = vim.g.snacks_indent ~= false and vim.b[buf].snacks_indent ~= false and vim.bo[buf].buftype == ""
+        return default and vim.bo[buf].filetype ~= "markdown"
+      end,
+    },
+
     input = {
       enabled = true,
       win = {
@@ -27,6 +42,7 @@ return {
         },
       },
     },
+
     scroll = {
       enabled = true,
       animate = {
