@@ -14,6 +14,7 @@ return {
       completion = {
         accept = { auto_brackets = { enabled = false } },
         menu = {
+          max_height = 20,
           border = "single",
           draw = {
             columns = {
