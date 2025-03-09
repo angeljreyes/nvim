@@ -142,7 +142,6 @@ return {
 
   {
     "seblyng/roslyn.nvim",
-    ft = { "cs", "razor" },
     dependencies = {
       "tris203/rzls.nvim",
       "saghen/blink.cmp",
