@@ -3,7 +3,6 @@
 return {
   {
     "DestopLine/scratch-runner.nvim",
-    dev = Utils.is_profile("home"),
     dependencies = "folke/snacks.nvim",
   },
 

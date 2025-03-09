@@ -1,7 +1,6 @@
 return {
   {
     "DestopLine/boilersharp.nvim",
-    dev = Utils.is_profile("home"),
     opts = {},
   },
 

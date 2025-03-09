@@ -21,5 +21,8 @@ vim.o.rtp = lazypath .. "," .. vim.o.rtp
 
 require("lazy").setup("plugins", {
   change_detection = { notify = false },
-  dev = { path = "~/dev/nvim" },
+  dev = {
+    path = "~/dev/nvim",
+    patterns = Utils.is_profile("home") and { "DestopLine" } or nil,
+  },
 })
