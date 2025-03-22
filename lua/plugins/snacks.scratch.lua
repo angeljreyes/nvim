@@ -4,6 +4,13 @@ return {
   {
     "DestopLine/scratch-runner.nvim",
     dependencies = "folke/snacks.nvim",
+    opts = {
+      sources = {
+        python = { Utils.on_windows and "py" or "python3" },
+        javascript = { "node" },
+        cs = { "dotnet-script" },
+      },
+    },
   },
 
   {
@@ -30,20 +37,19 @@ return {
       { "<leader>.j", function() Snacks.scratch({ ft = "javascript" }) end, desc = "Open JavaScript scratch window" },
     },
 
-    opts = function(_, opts)
+    opts = {
       ---@type snacks.scratch.Config
-      opts.scratch = {
+      scratch = {
+        filekey = {
+          branch = false,
+          cwd = false,
+        },
         win = {
           relative = "editor",
           width = 0.7,
           height = 0.8,
         },
-        win_by_ft = require("scratch-runner").make_win_by_ft({
-          python = { Utils.on_windows and "py" or "python3" },
-          javascript = { "node" },
-          cs = { "dotnet-script" },
-        }),
-      }
-    end,
+      },
+    },
   },
 }
