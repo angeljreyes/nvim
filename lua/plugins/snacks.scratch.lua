@@ -1,14 +1,78 @@
 ---@module "snacks"
 
+local scratch_fts = {
+  {
+    keymap = "l",
+    ft = "lua",
+    name = "Lua",
+  },
+  {
+    keymap = "c",
+    ft = "cs",
+    name = "C#",
+  },
+  {
+    keymap = "p",
+    ft = "python",
+    name = "Python",
+  },
+  {
+    keymap = "j",
+    ft = "javascript",
+    name = "JavaScript",
+  },
+  {
+    keymap = "t",
+    ft = "typescript",
+    name = "TypeScript",
+  },
+  {
+    keymap = "r",
+    ft = "rust",
+    name = "Rust",
+  },
+}
+
+local specific_fts = {}
+
+for _, t in ipairs(scratch_fts) do
+  table.insert(specific_fts, {
+    "<leader>." .. t.keymap,
+    ---@diagnostic disable-next-line: missing-fields
+    function() Snacks.scratch({ ft = t.ft }) end,
+    desc = "Open " .. t.name .. " scratch window",
+  })
+end
+
 return {
   {
     "DestopLine/scratch-runner.nvim",
     dependencies = "folke/snacks.nvim",
+    branch = "compiled-support",
+
+    ---@module "scratch-runner"
+    ---@type scratch-runner.Config
     opts = {
       sources = {
-        python = { Utils.on_windows and "py" or "python3" },
-        javascript = { "node" },
+        python = { { Utils.on_windows and "py" or "python3" }, extension = "py" },
+        javascript = { { "deno" }, extension = "js" },
+        typescript = { { "deno" }, extension = "ts" },
         cs = { "dotnet-script" },
+        rust = {
+          function(filepath, bin_path) return { "rustc", filepath, "-o", bin_path } end,
+          extension = "rs",
+          binary = true,
+        },
+        c = {
+          function(filepath, bin_path) return { "gcc", filepath, "-o", bin_path } end,
+          extension = "c",
+          binary = true,
+        },
+        cpp = {
+          function(filepath, bin_path) return { "g++", filepath, "-o", bin_path } end,
+          extension = "cpp",
+          binary = true,
+        },
       },
     },
   },
@@ -22,23 +86,21 @@ return {
         "<leader>./",
         function()
           local filetypes = vim.fn.getcompletion("", "filetype")
-          ---@diagnostic disable-next-line: missing-fields
-          Snacks.picker.select(filetypes, nil, function(ft) Snacks.scratch({ ft = ft }) end)
+          Snacks.picker.select(filetypes, nil, function(ft)
+            if ft then
+              ---@diagnostic disable-next-line: missing-fields
+              Snacks.scratch({ ft = ft })
+            end
+          end)
         end,
         desc = "Open some filetype scratch window",
       },
-      ---@diagnostic disable-next-line: missing-fields
-      { "<leader>.l", function() Snacks.scratch({ ft = "lua" }) end, desc = "Open Lua scratch window" },
-      ---@diagnostic disable-next-line: missing-fields
-      { "<leader>.c", function() Snacks.scratch({ ft = "cs" }) end, desc = "Open C# scratch window" },
-      ---@diagnostic disable-next-line: missing-fields
-      { "<leader>.p", function() Snacks.scratch({ ft = "python" }) end, desc = "Open Python scratch window" },
-      ---@diagnostic disable-next-line: missing-fields
-      { "<leader>.j", function() Snacks.scratch({ ft = "javascript" }) end, desc = "Open JavaScript scratch window" },
+      unpack(specific_fts),
     },
 
     opts = {
       ---@type snacks.scratch.Config
+      ---@diagnostic disable-next-line: missing-fields
       scratch = {
         filekey = {
           branch = false,
