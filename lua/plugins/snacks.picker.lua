@@ -3,7 +3,6 @@
 return {
   "folke/snacks.nvim",
   keys = {
-    { "<leader>f", function() Snacks.explorer() end, desc = "File explorer" },
     { "<leader>ss", function() Snacks.picker() end, desc = "Search pickers" },
     { "<leader>sr", function() Snacks.picker.resume() end, desc = "Resume last picker" },
     { "<leader>sf", function() Snacks.picker.files() end, desc = "Search files" },
@@ -29,7 +28,7 @@ return {
   opts = {
     explorer = {
       enabled = true,
-      replace_netrw = true,
+      replace_netrw = false,
     },
 
     picker = {
