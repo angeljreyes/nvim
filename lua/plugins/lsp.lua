@@ -15,23 +15,16 @@ local on_lsp_attach = function(_, bufnr)
     vim.keymap.set(mode, keys, func, { buffer = bufnr, desc = desc })
   end
 
-  map("n", "<leader>cr", vim.lsp.buf.rename, "Code rename")
-  map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code action")
   map("i", "<c-.>", vim.lsp.buf.code_action, "Code action")
+  map("n", "<c-k>", vim.lsp.buf.signature_help, "Signature documentation")
+  map("n", "gD", vim.lsp.buf.declaration, "Go to declaration")
 
   map("n", "gd", Snacks.picker.lsp_definitions, "Go to definition")
-  map("n", "gr", Snacks.picker.lsp_references, "Go to references")
-  map("n", "gI", Snacks.picker.lsp_implementations, "Go to implementation")
-  map("n", "<leader>sT", Snacks.picker.lsp_type_definitions, "Search type definitions")
-  map("n", "<leader>sS", Snacks.picker.lsp_symbols, "Search document symbols")
-  map("n", "<leader>sW", Snacks.picker.lsp_workspace_symbols, "Search workspace symbols")
-
-  -- See `:help K` for why this keymap
-  map("n", "K", vim.lsp.buf.hover, "Hover documentation")
-  map("n", "<c-k>", vim.lsp.buf.signature_help, "Signature documentation")
-
-  -- Lesser used LSP functionality
-  map("n", "gD", vim.lsp.buf.declaration, "Go to declaration")
+  map("n", "grr", Snacks.picker.lsp_references, "Go to references")
+  map("n", "gri", Snacks.picker.lsp_implementations, "Go to implementation")
+  map("n", "gC", Snacks.picker.lsp_type_definitions, "Search type definitions")
+  map("n", "gO", Snacks.picker.lsp_symbols, "Search document symbols")
+  map("n", "gW", Snacks.picker.lsp_workspace_symbols, "Search workspace symbols")
 end
 
 return {
@@ -210,7 +203,7 @@ return {
         },
       })
 
-      vim.keymap.set({ "n", "x" }, "<leader>cf", function()
+      vim.keymap.set({ "n", "x" }, "grf", function()
         local clients = vim.lsp.get_clients({ bufnr = 0 })
         local is_null_ls_attached = vim.iter(clients):any(function(client) return client.name == "null-ls" end)
         if is_null_ls_attached then
