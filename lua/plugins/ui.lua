@@ -74,7 +74,6 @@ return {
         callback = function(args)
           local win = args.data.win_id
           local config = vim.api.nvim_win_get_config(win)
-          config.border = "rounded"
           config.title_pos = "center"
           vim.api.nvim_win_set_config(win, config)
         end,
