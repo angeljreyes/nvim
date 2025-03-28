@@ -15,7 +15,6 @@ return {
       local dap = require("dap")
 
       dotnet.setup({
-        picker = "basic",
         test_runner = {
           viewmode = "float",
           mappings = {
