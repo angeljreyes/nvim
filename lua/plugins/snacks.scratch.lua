@@ -48,7 +48,6 @@ return {
   {
     "DestopLine/scratch-runner.nvim",
     dependencies = "folke/snacks.nvim",
-    branch = "compiled-support",
 
     ---@module "scratch-runner"
     ---@type scratch-runner.Config
