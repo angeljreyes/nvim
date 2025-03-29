@@ -51,16 +51,3 @@ vim.o.foldtext = ""
 vim.o.laststatus = 3
 
 vim.o.winborder = "rounded"
-
-vim.diagnostic.config({
-  virtual_text = true,
-  signs = false,
-  update_in_insert = false,
-  underline = true,
-  severity_sort = true,
-})
-
-vim.cmd([[
-  aunmenu PopUp.How-to\ disable\ mouse
-  aunmenu PopUp.-1-
-]])

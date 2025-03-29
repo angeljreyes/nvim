@@ -22,4 +22,15 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   callback = function() vim.highlight.on_yank() end,
 })
 
-vim.diagnostic.config({ signs = false })
+vim.diagnostic.config({
+  virtual_text = true,
+  signs = false,
+  update_in_insert = false,
+  underline = true,
+  severity_sort = true,
+})
+
+vim.cmd([[
+  aunmenu PopUp.How-to\ disable\ mouse
+  aunmenu PopUp.-1-
+]])
