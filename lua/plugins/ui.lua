@@ -46,8 +46,10 @@ return {
 
   {
     "folke/which-key.nvim",
+    ---@module "which-key"
+    ---@type wk.Opts
     opts = {
-      ---@module "which-key"
+      preset = "helix",
       ---@type wk.Spec
       spec = {
         { "<leader>a", group = "Harpoon" },
