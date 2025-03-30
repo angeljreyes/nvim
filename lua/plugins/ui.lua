@@ -43,45 +43,6 @@ return {
   },
 
   {
-    ---@module "mini.files"
-    "echasnovski/mini.files",
-    lazy = false,
-    keys = {
-      { "<leader>f", function() MiniFiles.open() end, desc = "Open files" },
-    },
-    opts = {
-      options = {
-        use_as_default_explorer = true,
-      },
-      windows = {
-        max_number = 3,
-        preview = true,
-        width_focus = 70,
-        width_nofocus = 40,
-        width_preview = 60,
-      },
-      mappings = {
-        go_in = "L",
-        go_in_plus = "<cr>",
-        go_out = "",
-        go_out_plus = "H",
-      },
-    },
-    config = function(_, opts)
-      require("mini.files").setup(opts)
-      vim.api.nvim_create_autocmd("User", {
-        pattern = "MiniFilesWindowOpen",
-        callback = function(args)
-          local win = args.data.win_id
-          local config = vim.api.nvim_win_get_config(win)
-          config.title_pos = "center"
-          vim.api.nvim_win_set_config(win, config)
-        end,
-      })
-    end,
-  },
-
-  {
     "mcauley-penney/visual-whitespace.nvim",
     opts = function()
       return {
