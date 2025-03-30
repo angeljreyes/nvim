@@ -3,7 +3,7 @@ return {
 
   {
     "kevinhwang91/nvim-fundo",
-    opts = {},
     dependencies = "kevinhwang91/promise-async",
+    opts = {},
   },
 }
