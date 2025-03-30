@@ -11,7 +11,8 @@ return {
   },
 
   {
-    "andweeb/presence.nvim",
+    "IogaMaster/neocord",
     enabled = Utils.is_profile("home") and not Utils.on_windows,
+    opts = {},
   },
 }
