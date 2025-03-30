@@ -6,4 +6,10 @@ return {
     dependencies = "kevinhwang91/promise-async",
     opts = {},
   },
+
+  {
+    "IogaMaster/neocord",
+    enabled = Utils.is_profile("home"),
+    opts = {},
+  },
 }
