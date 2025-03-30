@@ -1,11 +1,57 @@
 ---@module "snacks"
 
+local function directory_picker()
+  return Snacks.picker({
+    finder = function()
+      local directories = {}
+
+      local handle = io.popen("fd . --type directory")
+      if handle then
+        for line in handle:lines() do
+          table.insert(directories, line)
+        end
+        handle:close()
+      else
+        vim.notify("Failed to execute fd command", vim.log.levels.ERROR)
+      end
+
+      local items = {}
+      for i, item in ipairs(directories) do
+        table.insert(items, {
+          idx = i,
+          file = item,
+          text = item,
+        })
+      end
+      return items
+    end,
+    format = function(item, _)
+      local file = item.file
+      local format = {}
+      local align = Snacks.picker.util.align
+      local icon, icon_hl = Snacks.util.icon(file.ft, "directory")
+
+      format[#format + 1] = { align(icon, 3), icon_hl }
+      format[#format + 1] = { " " }
+      format[#format + 1] = { align(file, 20) }
+
+      return format
+    end,
+    confirm = function(picker, item)
+      picker:close()
+      ---@module "mini.files"
+      MiniFiles.open(item.file, false)
+    end
+  })
+end
+
 return {
   "folke/snacks.nvim",
   keys = {
     { "<leader>ss", function() Snacks.picker() end, desc = "Search pickers" },
     { "<leader>sr", function() Snacks.picker.resume() end, desc = "Resume last picker" },
     { "<leader>sf", function() Snacks.picker.files() end, desc = "Search files" },
+    { "<leader>F", function() directory_picker() end, desc = "Search directories" },
     { "<leader>s?", function() Snacks.picker.recent() end, desc = "Search recent files" },
     { "<leader>sb", function() Snacks.picker.buffers() end, desc = "Search buffers" },
     { "<leader>u", function() Snacks.picker.undo() end, desc = "Undotree" },
