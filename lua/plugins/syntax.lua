@@ -1,8 +1,6 @@
 return {
   "tpope/vim-sleuth",
 
-  "hiphish/rainbow-delimiters.nvim",
-
   {
     "echasnovski/mini.move",
     opts = {},

@@ -11,6 +11,8 @@ local function get_line_amount() return tostring(vim.fn.line("$")) .. "L" end
 return {
   "nvim-tree/nvim-web-devicons",
 
+  "hiphish/rainbow-delimiters.nvim",
+
   {
     "uga-rosa/ccc.nvim",
     lazy = false,
