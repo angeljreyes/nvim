@@ -12,7 +12,7 @@ Neovim >= 0.10.0 `winget install neovim`
 - Any [C compiler](https://winlibs.com) (for treesitter and fzf-native)
 - Make (for fzf-native) `winget install ezwinports.make`
 - tree-sitter-cli (for treesitter) `npm i -g tree-sitter-cli`
-  - Node.js & NPM (for markdown-preview and coc) `winget install openjs.nodejs.lts`
+  - Node.js & NPM (for markdown-preview) `winget install openjs.nodejs.lts`
 
 ## Debian Based Dependencies
 Neovim >= 0.10.0
