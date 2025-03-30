@@ -216,8 +216,8 @@ return {
   },
 
   {
-    "stefanboca/venv-selector.nvim",
-    branch = "sb/push-rlpxsqmllxtz",
+    "linux-cultist/venv-selector.nvim",
+    branch = "regexp",
     dependencies = {
       "neovim/nvim-lspconfig",
     },
