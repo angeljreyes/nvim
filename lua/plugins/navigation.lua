@@ -4,7 +4,16 @@ return {
     "echasnovski/mini.files",
     lazy = false,
     keys = {
-      { "<leader>f", function() MiniFiles.open(vim.api.nvim_buf_get_name(0)) end, desc = "Open files" },
+      {
+        "<leader>f",
+        function()
+          local ok = pcall(function() MiniFiles.open(vim.api.nvim_buf_get_name(0)) end)
+          if not ok then
+            MiniFiles.open()
+          end
+        end,
+        desc = "Open files",
+      },
     },
     opts = {
       options = {
@@ -37,9 +46,7 @@ return {
       })
       vim.api.nvim_create_autocmd("User", {
         pattern = "MiniFilesExplorerOpen",
-        callback = function(_)
-          MiniFiles.reveal_cwd()
-        end,
+        callback = function(_) MiniFiles.reveal_cwd() end,
       })
     end,
   },
