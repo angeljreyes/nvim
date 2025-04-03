@@ -20,7 +20,7 @@ vim.keymap.set("i", "<c-bs>", "<c-w>", { desc = "Delete word" })
 vim.keymap.set(
   "n",
   "[d",
-  function() vim.diagnostic.jump({ count = 1, float = true }) end,
+  function() vim.diagnostic.jump({ count = -1, float = true }) end,
   { desc = "Go to previous diagnostic message" }
 )
 vim.keymap.set(
