@@ -1,8 +1,5 @@
----@class (exact) NvimConfig.LanguageServer
----@field settings? table
----@field enabled? boolean
----@field filetypes? string[]
----@field init_options? table
+---@class NvimConfig.LanguageServer : lspconfig.Config
+---@field cmd? string[]
 
 ---@module "snacks"
 
@@ -55,14 +52,10 @@ return {
       "saghen/blink.cmp",
     },
 
-    config = function()
-      ---@type { [string]: NvimConfig.LanguageServer }
-      local servers = {
-        rust_analyzer = { enabled = Utils.is_profile("home") },
-        ts_ls = {},
-        html = {},
+    opts = function()
+      ---@type table<string, NvimConfig.LanguageServer>
+      local overrides = {
         angularls = {
-          enabled = Utils.is_profile("home"),
           filetypes = { "html", "angular" },
         },
         tailwindcss = {
@@ -73,10 +66,6 @@ return {
             },
           },
         },
-        jsonls = {},
-        clangd = { enabled = Utils.is_profile("home") },
-        pyright = {},
-        ruff = {},
         lua_ls = {
           settings = {
             Lua = {
@@ -87,37 +76,20 @@ return {
         },
       }
 
-      for name, server in pairs(servers) do
-        if server.enabled == false then
-          servers[name] = nil
-        end
-      end
+      local base_opts = {
+        capabilities = require("blink.cmp").get_lsp_capabilities(),
+        on_attach = on_lsp_attach,
+        settings = {},
+      }
 
-      -- Ensure the servers above are installed
-      local mason_lspconfig = require("mason-lspconfig")
-
-      mason_lspconfig.setup({
-        ensure_installed = vim.tbl_keys(servers),
-        automatic_installation = true,
-      })
-
-      mason_lspconfig.setup_handlers({
-        function(server_name)
-          local server = servers[server_name]
-
-          if server == nil then
-            return
-          end
-
-          require("lspconfig")[server_name].setup({
-            capabilities = require("blink.cmp").get_lsp_capabilities(),
-            on_attach = on_lsp_attach,
-            settings = server.settings or {},
-            filetypes = server.filetypes,
-            init_options = server.init_options,
-          })
-        end,
-      })
+      return {
+        handlers = {
+          function(server_name)
+            local server_opts = vim.tbl_deep_extend("force", base_opts, overrides[server_name] or {})
+            require("lspconfig")[server_name].setup(server_opts)
+          end,
+        },
+      }
     end,
   },
 
