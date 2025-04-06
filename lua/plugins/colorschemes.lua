@@ -19,6 +19,7 @@ return {
           return {
             GitSignsChange = { fg = colors.peach },
             WinSeparator = { fg = colors.overlay0 },
+            Pmenu = { bg = colors.surface0 },
           }
         end,
         integrations = {

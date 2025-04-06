@@ -15,7 +15,7 @@ return {
         accept = { auto_brackets = { enabled = false } },
         menu = {
           max_height = 20,
-          border = "single",
+          border = "none",
           draw = {
             columns = {
               { "label", "label_description", gap = 1 },
@@ -24,17 +24,13 @@ return {
           },
         },
         documentation = {
-          window = { border = "single" },
           auto_show = true,
           auto_show_delay_ms = 300,
         },
       },
       signature = {
         enabled = true,
-        window = {
-          border = "single",
-          show_documentation = true,
-        },
+        window = { show_documentation = true },
       },
       keymap = {
         ["<Tab>"] = {},
