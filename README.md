@@ -11,6 +11,8 @@ Neovim >= 0.10.0 `winget install neovim`
 - Ripgrep (for Snacks.picker) `winget install burntsushi.ripgrep.gnu`
 - Any [C compiler](https://winlibs.com) (for treesitter and fzf-native)
 - Make (for fzf-native) `winget install ezwinports.make`
+- ImageMagick (for Snacks.image) `winget install imagemagick.imagemagick`
+- jq (for easy-dotnet.nvim) `winget install jqlang.jq`
 - tree-sitter-cli (for treesitter) `npm i -g tree-sitter-cli`
   - Node.js & NPM (for markdown-preview) `winget install openjs.nodejs.lts`
 
@@ -27,6 +29,8 @@ sudo ln -s /opt/nvim-linux64/bin/nvim /usr/local/bin/nvim
 - [fd](https://github.com/sharkdp/fd/releases/latest) (for Snacks.picker and VenvSelect)
   Recommended version ends with `x86_64-unknown-linux-gnu.tar.gz `. `.deb` might be broken
 - [Ripgrep](https://github.com/BurntSushi/ripgrep/releases) (for Snacks.picker)
+- ImageMagick (for Snacks.image) `sudo apt install imagemagick`
+- jq (for easy-dotnet.nvim) `sudo apt install jq`
 - Node.js & NPM (for markdown-preview)
   - Node Version Manager
     ```sh
