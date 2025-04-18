@@ -22,9 +22,6 @@ return {
       windows = {
         max_number = 3,
         preview = true,
-        width_focus = 70,
-        width_nofocus = 40,
-        width_preview = 60,
       },
       mappings = {
         go_in = "L",
@@ -35,6 +32,7 @@ return {
     },
     config = function(_, opts)
       require("mini.files").setup(opts)
+
       vim.api.nvim_create_autocmd("User", {
         pattern = "MiniFilesWindowOpen",
         callback = function(args)
@@ -44,10 +42,19 @@ return {
           vim.api.nvim_win_set_config(win, config)
         end,
       })
+
       vim.api.nvim_create_autocmd("User", {
         pattern = "MiniFilesExplorerOpen",
         callback = function(_) MiniFiles.reveal_cwd() end,
       })
+
+      local function set_window_widths()
+        MiniFiles.config.windows.width_nofocus = math.floor(0.25 * vim.o.columns)
+        MiniFiles.config.windows.width_focus = math.floor(0.30 * vim.o.columns)
+        MiniFiles.config.windows.width_preview = math.floor(0.35 * vim.o.columns)
+      end
+      set_window_widths()
+      vim.api.nvim_create_autocmd("VimResized", { callback = set_window_widths })
     end,
   },
 
