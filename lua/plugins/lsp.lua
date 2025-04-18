@@ -1,7 +1,6 @@
----@class NvimConfig.LanguageServer : lspconfig.Config
----@field cmd? string[]
-
 return {
+  "neovim/nvim-lspconfig",
+
   {
     "j-hui/fidget.nvim",
     opts = {},
@@ -26,47 +25,34 @@ return {
     dependencies = {
       "williamboman/mason.nvim",
       "neovim/nvim-lspconfig",
-      "saghen/blink.cmp",
     },
 
-    opts = function()
-      ---@type table<string, NvimConfig.LanguageServer>
-      local overrides = {
-        angularls = {
-          filetypes = { "html", "angular" },
-        },
-        tailwindcss = {
-          filetypes = { "html", "angular" },
-          init_options = {
-            userLanguages = {
-              angular = "html",
+    opts = {
+      handlers = {
+        function(server_name)
+          if vim.lsp.config[server_name] then
+            vim.lsp.enable(server_name)
+          else
+            require("lspconfig")[server_name].setup()
+          end
+        end,
+        angularls = function()
+          require("lspconfig").angularls.setup({
+            filetypes = { "html", "angular" },
+          })
+        end,
+        tailwindcss = function()
+          require("lspconfig").tailwindcss.setup({
+            filetypes = { "html", "angular" },
+            init_options = {
+              userLanguages = {
+                angular = "html",
+              },
             },
-          },
-        },
-        lua_ls = {
-          settings = {
-            Lua = {
-              workspace = { checkThirdParty = false },
-              telemetry = { enable = false },
-            },
-          },
-        },
-      }
-
-      local base_opts = {
-        capabilities = require("blink.cmp").get_lsp_capabilities(),
-        settings = {},
-      }
-
-      return {
-        handlers = {
-          function(server_name)
-            local server_opts = vim.tbl_deep_extend("force", base_opts, overrides[server_name] or {})
-            require("lspconfig")[server_name].setup(server_opts)
-          end,
-        },
-      }
-    end,
+          })
+        end,
+      },
+    },
   },
 
   {
