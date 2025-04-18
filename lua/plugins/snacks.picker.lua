@@ -68,6 +68,13 @@ return {
     { "<leader>sq", function() Snacks.picker.qflist() end, desc = "Search quickfix list" },
     { "<leader>sl", function() Snacks.picker.loclist() end, desc = "Search location list" },
     { "<leader>sc", function() Snacks.picker.git_log_file() end, desc = "Search git commits on this file" },
+
+    { "gd", function() Snacks.picker.lsp_definitions() end, "Go to definition" },
+    { "grr", function() Snacks.picker.lsp_references() end, "Go to references" },
+    { "gri", function() Snacks.picker.lsp_implementations() end, "Go to implementation" },
+    { "gC", function() Snacks.picker.lsp_type_definitions() end, "Search type definitions" },
+    { "gO", function() Snacks.picker.lsp_symbols() end, "Search document symbols" },
+    { "gW", function() Snacks.picker.lsp_workspace_symbols() end, "Search workspace symbols" },
   },
 
   ---@type snacks.Config

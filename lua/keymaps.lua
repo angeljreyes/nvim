@@ -35,3 +35,7 @@ vim.keymap.set(
   function() vim.diagnostic.open_float() end,
   { desc = "Open floating diagnostic message" }
 )
+
+vim.keymap.set("i", "<c-.>", vim.lsp.buf.code_action, { desc = "Code action" })
+vim.keymap.set("n", "<c-k>", vim.lsp.buf.signature_help, { desc = "Signature documentation" })
+vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })

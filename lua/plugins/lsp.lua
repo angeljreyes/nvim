@@ -1,29 +1,6 @@
 ---@class NvimConfig.LanguageServer : lspconfig.Config
 ---@field cmd? string[]
 
----@module "snacks"
-
-local on_lsp_attach = function(_, bufnr)
-  local map = function(mode, keys, func, desc)
-    if desc then
-      desc = "LSP: " .. desc
-    end
-
-    vim.keymap.set(mode, keys, func, { buffer = bufnr, desc = desc })
-  end
-
-  map("i", "<c-.>", vim.lsp.buf.code_action, "Code action")
-  map("n", "<c-k>", vim.lsp.buf.signature_help, "Signature documentation")
-  map("n", "gD", vim.lsp.buf.declaration, "Go to declaration")
-
-  map("n", "gd", Snacks.picker.lsp_definitions, "Go to definition")
-  map("n", "grr", Snacks.picker.lsp_references, "Go to references")
-  map("n", "gri", Snacks.picker.lsp_implementations, "Go to implementation")
-  map("n", "gC", Snacks.picker.lsp_type_definitions, "Search type definitions")
-  map("n", "gO", Snacks.picker.lsp_symbols, "Search document symbols")
-  map("n", "gW", Snacks.picker.lsp_workspace_symbols, "Search workspace symbols")
-end
-
 return {
   {
     "j-hui/fidget.nvim",
@@ -78,7 +55,6 @@ return {
 
       local base_opts = {
         capabilities = require("blink.cmp").get_lsp_capabilities(),
-        on_attach = on_lsp_attach,
         settings = {},
       }
 
@@ -127,7 +103,6 @@ return {
         config = {
           handlers = require("rzls.roslyn_handlers"),
           capabilities = require("blink.cmp").get_lsp_capabilities(),
-          on_attach = on_lsp_attach,
           settings = {},
         },
       }
@@ -139,8 +114,8 @@ return {
     ft = { "cs", "razor" },
     opts = function()
       ---@type rzls.Config
+      ---@diagnostic disable-next-line: missing-fields
       return {
-        on_attach = on_lsp_attach,
         capabilities = require("blink.cmp").get_lsp_capabilities(),
       }
     end,
