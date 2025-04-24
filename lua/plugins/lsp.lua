@@ -36,21 +36,6 @@ return {
             require("lspconfig")[server_name].setup()
           end
         end,
-        angularls = function()
-          require("lspconfig").angularls.setup({
-            filetypes = { "html", "angular" },
-          })
-        end,
-        tailwindcss = function()
-          require("lspconfig").tailwindcss.setup({
-            filetypes = { "html", "angular" },
-            init_options = {
-              userLanguages = {
-                angular = "html",
-              },
-            },
-          })
-        end,
       },
     },
   },
@@ -63,33 +48,33 @@ return {
     },
     opts = function()
       return {
-        args = {
-          "--stdio",
-          "--logLevel=Information",
-          "--extensionLogDirectory=" .. vim.fs.dirname(vim.lsp.get_log_path()),
-          "--razorSourceGenerator=" .. vim.fs.joinpath(
-            vim.fn.stdpath("data") --[[@as string]],
-            "mason",
-            "packages",
-            "roslyn",
-            "libexec",
-            "Microsoft.CodeAnalysis.Razor.Compiler.dll"
-          ),
-          "--razorDesignTimePath=" .. vim.fs.joinpath(
-            vim.fn.stdpath("data") --[[@as string]],
-            "mason",
-            "packages",
-            "rzls",
-            "libexec",
-            "Targets",
-            "Microsoft.NET.Sdk.Razor.DesignTime.targets"
-          ),
-        },
         ---@diagnostic disable-next-line: missing-fields
         config = {
           handlers = require("rzls.roslyn_handlers"),
           capabilities = require("blink.cmp").get_lsp_capabilities(),
           settings = {},
+          cmd = {
+            "--stdio",
+            "--logLevel=Information",
+            "--extensionLogDirectory=" .. vim.fs.dirname(vim.lsp.get_log_path()),
+            "--razorSourceGenerator=" .. vim.fs.joinpath(
+              vim.fn.stdpath("data") --[[@as string]],
+              "mason",
+              "packages",
+              "roslyn",
+              "libexec",
+              "Microsoft.CodeAnalysis.Razor.Compiler.dll"
+            ),
+            "--razorDesignTimePath=" .. vim.fs.joinpath(
+              vim.fn.stdpath("data") --[[@as string]],
+              "mason",
+              "packages",
+              "rzls",
+              "libexec",
+              "Targets",
+              "Microsoft.NET.Sdk.Razor.DesignTime.targets"
+            ),
+          },
         },
       }
     end,
