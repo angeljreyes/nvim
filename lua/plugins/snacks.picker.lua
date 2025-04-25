@@ -41,7 +41,7 @@ local function directory_picker()
       picker:close()
       ---@module "mini.files"
       MiniFiles.open(item.file, false)
-    end
+    end,
   })
 end
 
@@ -114,6 +114,28 @@ return {
       ---@diagnostic disable-next-line: missing-fields
       icons = {
         diagnostics = { Hint = "󰌵 " },
+      },
+
+      layouts = {
+        dropdown = {
+          layout = {
+            backdrop = false,
+            width = 0.5,
+            min_width = 80,
+            height = 0.8,
+            border = "none",
+            box = "vertical",
+            { win = "preview", title = "{preview}", height = 0.6, border = "rounded" },
+            {
+              box = "vertical",
+              border = "rounded",
+              title = "{title} {live} {flags}",
+              title_pos = "center",
+              { win = "input", height = 1, border = "bottom" },
+              { win = "list", border = "none" },
+            },
+          },
+        },
       },
 
       sources = {
