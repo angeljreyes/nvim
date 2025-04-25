@@ -45,6 +45,7 @@
   "roslyn.nvim": { "branch": "main", "commit": "817983daa584d21f45d937928c87ba165b2a601a" },
   "rzls.nvim": { "branch": "pullDiags", "commit": "271c8ff6c88712ed15da9330cf033ecc89edaded" },
   "snacks.nvim": { "branch": "main", "commit": "bc0630e43be5699bb94dadc302c0d21615421d93" },
+  "tiny-code-action.nvim": { "branch": "main", "commit": "54acc599ab456d58d97b7b4bd971ee97faa3ec81" },
   "todo-comments.nvim": { "branch": "main", "commit": "304a8d204ee787d2544d8bc23cd38d2f929e7cc5" },
   "treesj": { "branch": "main", "commit": "f4049f8ba2177e7c5c03fb9e34d4e039c685d744" },
   "venv-selector.nvim": { "branch": "regexp", "commit": "c677caa1030808a9f90092e522de7cc20c1390dd" },
