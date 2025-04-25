@@ -54,6 +54,7 @@ return {
           capabilities = require("blink.cmp").get_lsp_capabilities(),
           settings = {},
           cmd = {
+            "roslyn",
             "--stdio",
             "--logLevel=Information",
             "--extensionLogDirectory=" .. vim.fs.dirname(vim.lsp.get_log_path()),
