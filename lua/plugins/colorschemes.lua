@@ -3,12 +3,6 @@ local transparency = false
 
 return {
   {
-    "loctvl842/monokai-pro.nvim",
-    priority = 1000,
-    opts = { transparent_background = transparency },
-  },
-
-  {
     "catppuccin/nvim",
     priority = 1000,
     name = "catppuccin",
@@ -36,10 +30,5 @@ return {
       })
       vim.cmd.colorscheme("catppuccin")
     end,
-  },
-
-  {
-    "navarasu/onedark.nvim",
-    priority = 1000,
   },
 }
