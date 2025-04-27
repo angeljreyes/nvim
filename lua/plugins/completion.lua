@@ -95,6 +95,13 @@ return {
         at = [[<\%#>]],
         delete = 1,
       })
+
+      -- Disable space insertion for brackets in markdown files
+      rule({
+        filetype = "markdown",
+        char = " ",
+        at = "[\\%#]",
+      })
     end,
   },
 
