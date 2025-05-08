@@ -21,23 +21,11 @@ return {
 
   {
     "williamboman/mason-lspconfig.nvim",
-
     dependencies = {
       "williamboman/mason.nvim",
       "neovim/nvim-lspconfig",
     },
-
-    opts = {
-      handlers = {
-        function(server_name)
-          if vim.lsp.config[server_name] then
-            vim.lsp.enable(server_name)
-          else
-            require("lspconfig")[server_name].setup()
-          end
-        end,
-      },
-    },
+    opts = {},
   },
 
   {
