@@ -14,6 +14,8 @@ return {
             GitSignsChange = { fg = colors.peach },
             WinSeparator = { fg = colors.overlay0 },
             Pmenu = { bg = colors.surface0 },
+            debugPC = { bg = colors.surface1 },
+            SignColumn = { fg = colors.maroon },
           }
         end,
         integrations = {
