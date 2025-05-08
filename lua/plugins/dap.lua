@@ -1,15 +1,36 @@
 return {
   {
     "mfussenegger/nvim-dap",
-    keys = {
-      { "<Leader>db", "<cmd>DapToggleBreakpoint<cr>", desc = "Toggle breakpoint" },
-      { "<Leader>dB", "<cmd>DapClearBreakpoints<cr>", desc = "Clear breakpoints" },
-      { "<leader>dc", "<cmd>DapContinue<cr>", desc = "Continue" },
-      { "<leader>dn", "<cmd>DapStepOver<cr>", desc = "Step over" },
-      { "<leader>di", "<cmd>DapStepInto<cr>", desc = "Step into" },
-      { "<leader>do", "<cmd>DapStepOut<cr>", desc = "Step out" },
-      { "<leader>ds", "<cmd>DapTerminate<cr>", desc = "Stop" },
-    },
+    keys = function()
+      local dap = require("dap")
+      return {
+        { "<Leader>db", function() dap.toggle_breakpoint() end, desc = "Toggle breakpoint" },
+        {
+          "<Leader>dB",
+          function()
+            vim.ui.input(nil, function(value)
+              if value == nil or value == "" then
+                return
+              end
+              dap.set_breakpoint(value)
+            end)
+          end,
+          desc = "Set conditional breakpoint",
+        },
+        { "<Leader>dq", function() dap.clear_breakpoints() end, desc = "Clear breakpoints" },
+        { "<leader>dc", function() dap.continue() end, desc = "Continue" },
+        { "<leader>dn", function() dap.step_over() end, desc = "Step over" },
+        { "<leader>di", function() dap.step_into() end, desc = "Step into" },
+        { "<leader>do", function() dap.step_out() end, desc = "Step out" },
+        { "<leader>dp", function() dap.step_back() end, desc = "Step back" },
+        { "<leader>dr", function() dap.restart() end, desc = "Restart" },
+        { "<leader>dg", function() dap.run_to_cursor() end, desc = "Continue until line under cursor" },
+        { "<leader>dG", function() dap.goto_() end, desc = "Go to line under cursor" },
+        { "<leader>du", function() dap.up() end, desc = "Go up in the stack" },
+        { "<leader>dd", function() dap.down() end, desc = "Go down in the stack" },
+        { "<leader>ds", function() dap.stop() end, desc = "Stop" },
+      }
+    end,
   },
 
   {
@@ -57,6 +78,6 @@ return {
           end,
         },
       }
-    end
+    end,
   },
 }
