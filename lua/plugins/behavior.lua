@@ -10,6 +10,9 @@ return {
   {
     "IogaMaster/neocord",
     enabled = Utils.is_profile("home"),
-    opts = {},
+    opts = {
+      main_image = "logo",
+      blacklist = { vim.fs.joinpath(vim.fn.expand("~"), "uni") },
+    },
   },
 }
