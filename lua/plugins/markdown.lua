@@ -3,7 +3,20 @@ return {
     "OXY2DEV/markview.nvim",
     ft = "markdown",
     keys = {
-      { "<leader>m", "<cmd>Markview<cr>", desc = "Toggle Markview", ft = "markdown" },
+      {
+        "<leader>m",
+        function()
+          if vim.o.conceallevel == 0 then
+            vim.cmd("Markview enable")
+            vim.o.conceallevel = 3
+          else
+            vim.cmd("Markview disable")
+            vim.o.conceallevel = 0
+          end
+        end,
+        desc = "Toggle Extra Rendering",
+        ft = "markdown",
+      },
     },
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
