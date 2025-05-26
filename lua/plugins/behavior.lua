@@ -15,4 +15,10 @@ return {
       blacklist = { vim.fs.joinpath(vim.fn.expand("~"), "uni") },
     },
   },
+
+  {
+    "folke/persistence.nvim",
+    event = "BufReadPre",
+    opts = {},
+  },
 }
