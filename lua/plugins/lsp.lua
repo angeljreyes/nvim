@@ -38,38 +38,23 @@ return {
       "tris203/rzls.nvim",
       "saghen/blink.cmp",
     },
-    opts = function()
-      return {
-        ---@diagnostic disable-next-line: missing-fields
-        config = {
-          handlers = require("rzls.roslyn_handlers"),
-          capabilities = require("blink.cmp").get_lsp_capabilities(),
-          settings = {},
-          cmd = {
-            "roslyn",
-            "--stdio",
-            "--logLevel=Information",
-            "--extensionLogDirectory=" .. vim.fs.dirname(vim.lsp.get_log_path()),
-            "--razorSourceGenerator=" .. vim.fs.joinpath(
-              vim.fn.stdpath("data") --[[@as string]],
-              "mason",
-              "packages",
-              "roslyn",
-              "libexec",
-              "Microsoft.CodeAnalysis.Razor.Compiler.dll"
-            ),
-            "--razorDesignTimePath=" .. vim.fs.joinpath(
-              vim.fn.stdpath("data") --[[@as string]],
-              "mason",
-              "packages",
-              "rzls",
-              "libexec",
-              "Targets",
-              "Microsoft.NET.Sdk.Razor.DesignTime.targets"
-            ),
-          },
+    config = function()
+      local rzls_path = vim.fn.expand("$MASON/packages/rzls/libexec")
+      vim.lsp.config("roslyn", {
+        cmd = {
+          "roslyn",
+          "--stdio",
+          "--logLevel=Information",
+          "--extensionLogDirectory=" .. vim.fs.dirname(vim.lsp.get_log_path()),
+          "--razorSourceGenerator=" .. vim.fs.joinpath(rzls_path, "Microsoft.CodeAnalysis.Razor.Compiler.dll"),
+          "--razorDesignTimePath="
+            .. vim.fs.joinpath(rzls_path, "Targets", "Microsoft.NET.Sdk.Razor.DesignTime.targets"),
+          "--extension",
+          vim.fs.joinpath(rzls_path, "RazorExtension", "Microsoft.VisualStudioCode.RazorExtension.dll"),
         },
-      }
+        handlers = require("rzls.roslyn_handlers"),
+      })
+      vim.lsp.enable("roslyn")
     end,
   },
 
