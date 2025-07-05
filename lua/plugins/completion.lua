@@ -27,6 +27,9 @@ return {
           auto_show = true,
           auto_show_delay_ms = 300,
         },
+        trigger = {
+          show_on_backspace = true,
+        },
       },
       signature = {
         enabled = true,
