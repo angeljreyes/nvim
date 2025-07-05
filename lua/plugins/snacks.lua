@@ -15,7 +15,12 @@ return {
     bigfile = { enabled = true },
     bufdelete = { enabled = true },
     notifier = { enabled = true },
-    image = { enabled = true },
+    image = {
+      enabled = true,
+      math = {
+        enabled = false,
+      },
+    },
 
     indent = {
       enabled = true,
