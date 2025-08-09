@@ -8,6 +8,10 @@ return {
     name = "catppuccin",
     config = function()
       require("catppuccin").setup({
+        float = {
+          transparent = true,
+          solid = false,
+        },
         transparent_background = transparency,
         custom_highlights = function(colors)
           return {
@@ -15,7 +19,7 @@ return {
             WinSeparator = { fg = colors.overlay0 },
             Pmenu = { bg = colors.surface0 },
             debugPC = { bg = colors.surface1 },
-            SignColumn = { fg = colors.maroon },
+            SignColumn = { fg = colors.maroon }, -- For breakpoints
           }
         end,
         integrations = {
