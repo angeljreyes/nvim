@@ -25,4 +25,5 @@ require("lazy").setup("plugins", {
     path = "~/dev/nvim",
     patterns = Utils.is_profile("home") and { "DestopLine" } or nil,
   },
+  ui = { border = "rounded" },
 })
