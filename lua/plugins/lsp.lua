@@ -60,7 +60,6 @@ return {
 
   {
     "tris203/rzls.nvim",
-    branch = "pullDiags",
     ft = { "cs", "razor" },
     opts = function()
       ---@type rzls.Config
