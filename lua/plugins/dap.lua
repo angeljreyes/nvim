@@ -28,7 +28,7 @@ return {
         { "<leader>dG", function() dap.goto_() end, desc = "Go to line under cursor" },
         { "<leader>du", function() dap.up() end, desc = "Go up in the stack" },
         { "<leader>dd", function() dap.down() end, desc = "Go down in the stack" },
-        { "<leader>ds", function() dap.stop() end, desc = "Stop" },
+        { "<leader>ds", function() dap.terminate() end, desc = "Stop" },
       }
     end,
   },
@@ -46,7 +46,7 @@ return {
       dap.listeners.before.attach.dapui_config = dapui.open
       dap.listeners.before.launch.dapui_config = dapui.open
       dap.listeners.before.event_terminated.dapui_config = dapui.close
-      dap.listeners.before.event_exited.dapui_config = dapui.close
+      dap.listeners.before.event_exited.dapui_config = function() dapui.close() end
     end,
   },
 
