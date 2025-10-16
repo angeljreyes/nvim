@@ -47,6 +47,7 @@ return {
       dap.listeners.before.launch.dapui_config = dapui.open
       dap.listeners.before.event_terminated.dapui_config = dapui.close
       dap.listeners.before.event_exited.dapui_config = function() dapui.close() end
+      vim.keymap.set({ "n", "v" }, "<leader>dk", function() dapui.eval() end, { desc = "Evaluate expression" })
     end,
   },
 
