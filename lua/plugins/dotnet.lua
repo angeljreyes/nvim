@@ -10,6 +10,7 @@ return {
       "nvim-lua/plenary.nvim",
       "mfussenegger/nvim-dap",
       "tris203/rzls.nvim",
+      "williamboman/mason.nvim",
     },
     opts = function()
       local rzls_path = vim.fn.expand("$MASON/packages/rzls/libexec")
@@ -48,7 +49,7 @@ return {
           },
         },
         debugger = {
-          bin_path = "$MASON/packages/netcoredbg/netcoredbg",
+          bin_path = vim.fn.expand("$MASON/packages/netcoredbg/netcoredbg"),
         },
       }
     end,
