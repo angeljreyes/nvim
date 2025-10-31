@@ -23,7 +23,7 @@ require("lazy").setup("plugins", {
   change_detection = { notify = false },
   dev = {
     path = "~/dev/nvim",
-    patterns = Utils.is_profile("home") and { "DestopLine" } or nil,
+    patterns = Utils.is_profile("home") and { "angeljreyes" } or nil,
   },
   ui = { border = "rounded" },
 })

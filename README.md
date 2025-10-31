@@ -39,7 +39,7 @@ sudo ln -s /opt/nvim-linux64/bin/nvim /usr/local/bin/nvim
     ```
 
 ## Arch Linux Dependencies
-You can read or run [this script](https://github.com/DestopLine/dotfiles/blob/master/scripts/scripts/archdeps/nvim.sh):
+You can read or run [this script](https://github.com/angeljreyes/dotfiles/blob/master/scripts/scripts/archdeps/nvim.sh):
 ```sh
-curl -o- https://raw.githubusercontent.com/DestopLine/dotfiles/master/scripts/scripts/archdeps/nvim.sh | bash
+curl -o- https://raw.githubusercontent.com/angeljreyes/dotfiles/master/scripts/scripts/archdeps/nvim.sh | bash
 ```

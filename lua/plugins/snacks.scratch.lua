@@ -46,7 +46,7 @@ end
 
 return {
   {
-    "DestopLine/scratch-runner.nvim",
+    "angeljreyes/scratch-runner.nvim",
     dependencies = "folke/snacks.nvim",
 
     ---@module "scratch-runner"

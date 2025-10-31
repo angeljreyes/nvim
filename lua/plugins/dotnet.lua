@@ -1,6 +1,6 @@
 return {
   {
-    "DestopLine/boilersharp.nvim",
+    "angeljreyes/boilersharp.nvim",
     opts = {},
   },
 
