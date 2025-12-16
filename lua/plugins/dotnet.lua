@@ -9,12 +9,9 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
       "mfussenegger/nvim-dap",
-      "tris203/rzls.nvim",
       "williamboman/mason.nvim",
     },
     opts = function()
-      local rzls_path = vim.fn.expand("$MASON/packages/rzls/libexec")
-
       return {
         test_runner = {
           viewmode = "float",
@@ -33,20 +30,7 @@ return {
         },
         auto_bootstrap_namespace = false,
         lsp = {
-          config = {
-            cmd = {
-              "roslyn",
-              "--stdio",
-              "--logLevel=Information",
-              "--extensionLogDirectory=" .. vim.fs.dirname(vim.lsp.get_log_path()),
-              "--razorSourceGenerator=" .. vim.fs.joinpath(rzls_path, "Microsoft.CodeAnalysis.Razor.Compiler.dll"),
-              "--razorDesignTimePath="
-                .. vim.fs.joinpath(rzls_path, "Targets", "Microsoft.NET.Sdk.Razor.DesignTime.targets"),
-              "--extension",
-              vim.fs.joinpath(rzls_path, "RazorExtension", "Microsoft.VisualStudioCode.RazorExtension.dll"),
-            },
-            handlers = require("rzls.roslyn_handlers"),
-          },
+          enabled = false,
         },
         debugger = {
           bin_path = vim.fn.expand("$MASON/packages/netcoredbg/netcoredbg"),

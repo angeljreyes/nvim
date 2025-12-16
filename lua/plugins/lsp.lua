@@ -33,16 +33,10 @@ return {
   },
 
   {
-    "tris203/rzls.nvim",
-    ft = { "cs", "razor" },
-    opts = function()
-      ---@type rzls.Config
-      ---@diagnostic disable-next-line: missing-fields
-      return {
-        capabilities = require("blink.cmp").get_lsp_capabilities(),
-      }
-    end,
-    dependencies = "saghen/blink.cmp",
+    "seblyng/roslyn.nvim",
+    ---@module 'roslyn.config'
+    ---@type RoslynNvimConfig
+    opts = {},
   },
 
   {
