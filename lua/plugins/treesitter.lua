@@ -18,98 +18,121 @@ return {
 
   "nvim-treesitter/nvim-treesitter-context",
 
-  "nvim-treesitter/nvim-treesitter-textobjects",
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    branch = "main",
+    opts = {
+      select = {
+        lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
+      },
+      move = {
+        set_jumps = true, -- whether to set jumps in the jumplist
+      },
+    },
+    config = function(_, opts)
+      require("nvim-treesitter-textobjects").setup(opts)
+
+      -- Select
+      ---@param lhs string
+      ---@param textobject string
+      local add_select_keymap = function(lhs, textobject)
+        vim.keymap.set(
+          { "x", "o" },
+          lhs,
+          function() require("nvim-treesitter-textobjects.select").select_textobject(textobject, "textobjects") end
+        )
+      end
+      add_select_keymap("aa", "@parameter.outer")
+      add_select_keymap("ia", "@parameter.inner")
+      add_select_keymap("af", "@function.outer")
+      add_select_keymap("if", "@function.inner")
+      add_select_keymap("ac", "@class.outer")
+      add_select_keymap("ic", "@class.inner")
+
+      -- Move
+      ---@param key_start string
+      ---@param key_end string
+      ---@param textobject string
+      local add_move_keymap = function(key_start, key_end, textobject)
+        vim.keymap.set(
+          { "n", "x", "o" },
+          "]" .. key_start,
+          function() require("nvim-treesitter-textobjects.move").goto_next_start(textobject, "textobjects") end
+        )
+        vim.keymap.set(
+          { "n", "x", "o" },
+          "]" .. key_end,
+          function() require("nvim-treesitter-textobjects.move").goto_next_end(textobject, "textobjects") end
+        )
+        vim.keymap.set(
+          { "n", "x", "o" },
+          "[" .. key_start,
+          function() require("nvim-treesitter-textobjects.move").goto_previous_start(textobject, "textobjects") end
+        )
+        vim.keymap.set(
+          { "n", "x", "o" },
+          "[" .. key_end,
+          function() require("nvim-treesitter-textobjects.move").goto_previous_end(textobject, "textobjects") end
+        )
+      end
+      add_move_keymap("f", "F", "@function.outer")
+      add_move_keymap("]", "[", "@class.outer")
+
+      -- Swap
+      vim.keymap.set(
+        "n",
+        "<leader>cp",
+        function() require("nvim-treesitter-textobjects.swap").swap_next("@parameter.inner") end
+      )
+      vim.keymap.set(
+        "n",
+        "<leader>cP",
+        function() require("nvim-treesitter-textobjects.swap").swap_previous("@parameter.inner") end
+      )
+    end,
+  },
 
   {
     "nvim-treesitter/nvim-treesitter",
+    lazy = false,
     build = ":TSUpdate",
+    opts = {},
+    config = function(_, opts)
+      require("nvim-treesitter").setup(opts)
 
-    ---@type TSConfig
+      vim.api.nvim_create_autocmd("User", {
+        pattern = "TSUpdate",
+        callback = function()
+          ---@diagnostic disable-next-line: missing-fields
+          require("nvim-treesitter.parsers").monkey = {
+            install_info = {
+              url = "https://github.com/jamestrew/tree-sitter-monkey",
+              revision = "master",
+              queries = "queries",
+            },
+          }
+        end,
+      })
+    end,
+  },
+
+  {
+    "MeanderingProgrammer/treesitter-modules.nvim",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
     opts = {
-      -- Add languages to be installed here that you want installed for treesitter
-      ensure_installed = {
-        "lua",
-        "vimdoc",
-        "vim",
-      },
-
-      -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
       auto_install = true,
-      -- Install languages synchronously (only applied to `ensure_installed`)
-      sync_install = false,
-      -- List of parsers to ignore installing
-      ignore_install = {},
-      -- You can specify additional Treesitter modules here: -- For example: -- playground = {--enable = true,-- },
-      modules = {},
+      fold = { enable = true },
       highlight = { enable = true },
       indent = { enable = true },
       incremental_selection = {
-        enable = false,
+        enable = true,
         keymaps = {
           init_selection = "<c-space>",
           node_incremental = "<c-space>",
           scope_incremental = "<c-s>",
-          node_decremental = "<M-space>",
-        },
-      },
-      textobjects = {
-        select = {
-          enable = true,
-          lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
-          keymaps = {
-            -- You can use the capture groups defined in textobjects.scm
-            ["aa"] = "@parameter.outer",
-            ["ia"] = "@parameter.inner",
-            ["af"] = "@function.outer",
-            ["if"] = "@function.inner",
-            ["ac"] = "@class.outer",
-            ["ic"] = "@class.inner",
-          },
-        },
-        move = {
-          enable = true,
-          set_jumps = true, -- whether to set jumps in the jumplist
-          goto_next_start = {
-            ["]m"] = "@function.outer",
-            ["]]"] = "@class.outer",
-          },
-          goto_next_end = {
-            ["]M"] = "@function.outer",
-            ["]["] = "@class.outer",
-          },
-          goto_previous_start = {
-            ["[m"] = "@function.outer",
-            ["[["] = "@class.outer",
-          },
-          goto_previous_end = {
-            ["[M"] = "@function.outer",
-            ["[]"] = "@class.outer",
-          },
-        },
-        swap = {
-          enable = true,
-          swap_next = {
-            ["<leader>cp"] = "@parameter.inner",
-          },
-          swap_previous = {
-            ["<leader>cP"] = "@parameter.inner",
-          },
+          node_decremental = "<m-space>",
         },
       },
     },
-
-    config = function(_, opts)
-      require("nvim-treesitter.configs").setup(opts)
-
-      local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-      ---@diagnostic disable-next-line: inject-field
-      parser_config.monkey = {
-        install_info = {
-          url = "https://github.com/jamestrew/tree-sitter-monkey.git",
-          files = { "src/parser.c" },
-        },
-        filetype = "mon",
-      }
-    end,
   },
 }
