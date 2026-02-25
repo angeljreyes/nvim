@@ -86,13 +86,6 @@ return {
 
     picker = {
       enabled = true,
-      layout = {
-        preset = "default",
-        layout = {
-          width = 0.88,
-          height = 0.88,
-        },
-      },
 
       matcher = {
         frecency = true,
@@ -117,6 +110,12 @@ return {
       },
 
       layouts = {
+        default = {
+          layout = {
+            width = 0.88,
+            height = 0.88,
+          },
+        },
         dropdown = {
           layout = {
             backdrop = false,
