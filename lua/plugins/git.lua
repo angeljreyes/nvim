@@ -10,7 +10,6 @@ return {
     },
 
     opts = {
-      kind = "floating",
       graph_style = "unicode",
       signs = {
         hunk = { "", "" },
@@ -20,9 +19,6 @@ return {
       commit_editor = {
         kind = "tab",
         spell_check = false,
-      },
-      log_view = {
-        kind = "floating",
       },
       mappings = {
         commit_editor = {
