@@ -56,7 +56,7 @@ return {
         python = { { Utils.on_windows and "py" or "python3" }, extension = "py" },
         javascript = { { "deno" }, extension = "js" },
         typescript = { { "deno" }, extension = "ts" },
-        cs = { "dotnet-script" },
+        cs = { "dotnet", "run" },
         rust = {
           function(filepath, bin_path) return { "rustc", filepath, "-o", bin_path } end,
           extension = "rs",
