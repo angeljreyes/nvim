@@ -32,7 +32,6 @@ sudo ln -s /opt/nvim-linux64/bin/nvim /usr/local/bin/nvim
 - ImageMagick (for Snacks.image) `sudo apt install imagemagick`
 - jq (for easy-dotnet.nvim) `sudo apt install jq`
 - Node.js & NPM (for markdown-preview)
-  - Node Version Manager
     ```sh
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
     nvm install --lts
