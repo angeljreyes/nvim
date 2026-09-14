@@ -7,6 +7,10 @@ vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', { desc = "Paste from clipboard"
 -- Visual block mode fix
 vim.keymap.set({ "x", "i" }, "<C-c>", "<esc>")
 
+-- Remap for dealing with word wrap
+vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
 -- Disable "Type  :qa  and press <Enter> to exit Nvim" text
 vim.cmd([[nnoremap <C-c> <silent> <C-c>]])
 
